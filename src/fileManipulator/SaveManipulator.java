@@ -16,7 +16,7 @@ public abstract class SaveManipulator {
 		Scanner entrada = new Scanner(System.in);
 		Save.lerNomeJogosSalvos();
 		System.out.print("Escreva o nome do jogo salvo que deseja continuar: ");
-		String nomeArq = entrada.nextLine();
+		String nomeArq = entrada.nextLine().toUpperCase();
 		entrada.close();
 		return Save.lerArquivoBinario(nomeArq);
 	}

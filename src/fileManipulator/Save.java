@@ -12,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import personagem.Jogador;
+import personagem.Personagem;
 
 public class Save {
 	// serialização: gravando o objetos no arquivo binário "nomeArq"
@@ -25,6 +26,7 @@ public class Save {
 			ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(arq));
 			objOutput.writeObject(jogador);
 			objOutput.close();
+			gravarNomeArqSalvo(nomeArq);
 			return true;
 
 		} catch (IOException erro) {
@@ -56,7 +58,7 @@ public class Save {
 	
 	protected static void gravarNomeArqSalvo(String nomeArq) throws IOException {
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(System.getProperty("user.dir")));
-		buffWrite.append(nomeArq + "\n");
+		buffWrite.append(nomeArq.toUpperCase() + "\n");
 		buffWrite.close();
 	}
 	

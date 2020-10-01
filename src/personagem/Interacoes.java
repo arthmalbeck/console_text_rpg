@@ -1,6 +1,8 @@
 package personagem;
 
-public class Interacoes {
+import java.io.Serializable;
+
+public class Interacoes implements Serializable{
 	private boolean dialogoSul;// 1
 	private boolean pegarOvosCeleiro;// 2
 	private boolean startQuestFerreiro;// 3

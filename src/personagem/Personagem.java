@@ -1,8 +1,6 @@
 package personagem;
 
-import java.io.Serializable;
-
-public class Personagem implements Serializable{
+public class Personagem{
 	private String nome = "";
 	private int atk = 0;
 	private int def = 0;

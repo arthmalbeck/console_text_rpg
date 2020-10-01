@@ -9,18 +9,22 @@ import personagem.Jogador;
 
 public class MontanhaSagrada {
 	public static Jogador jogador;
- static Scanner entrada = new Scanner(System.in);
-	public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	static Scanner entrada = new Scanner(System.in);
 
-		MontanhaSagrada.limpaConsole();
-		
+	public static void main(String[] args)
+			throws InterruptedException, IOException, ClassNotFoundException, NoSuchMethodException, SecurityException,
+			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+
+//		MontanhaSagrada.limpaConsole();
+
 		menuPrincipal();
 		escolhasMenuPrincipal(args);
-		
 
 	}
 
-	private static void escolhasMenuPrincipal(String[] args) throws InterruptedException, IOException, ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	private static void escolhasMenuPrincipal(String[] args)
+			throws InterruptedException, IOException, ClassNotFoundException, NoSuchMethodException, SecurityException,
+			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		boolean repeat = true;
 		do {
 			System.out.print("\n Opcao: ");
@@ -28,13 +32,14 @@ public class MontanhaSagrada {
 			switch (opcao) {
 			case 1:
 //				MontanhaSagrada.limpaConsole();
+				MontanhaSagrada.jogador = new Jogador();
 				Vilarejo.inicio();
 				repeat = false;
 				break;
 			case 2:
 //				MontanhaSagrada.limpaConsole();
-	            SaveManipulator.carregarJogo();
-
+				MontanhaSagrada.jogador = SaveManipulator.carregarJogo();
+				MontanhaSagrada.jogador.checkPoint();
 				MontanhaSagrada.pause();
 				repeat = false;
 				break;
@@ -51,7 +56,7 @@ public class MontanhaSagrada {
 			default:
 				System.out.println("\nEntrada Invalida!\n");
 			}
-		}while(repeat);
+		} while (repeat);
 	}
 
 	private static void menuPrincipal() {
@@ -82,13 +87,12 @@ public class MontanhaSagrada {
 		// Limpa a tela no windows, no linux e no MacOS
 		if (System.getProperty("os.name").contains("Windows")) {
 			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-		System.out.println("hi1");
-	}
-		else {
+			System.out.println("hi1");
+		} else {
 			Runtime.getRuntime().exec("clear");
 			System.out.println("hi");
 		}
-		
+
 	}
 
 	public static int entrada() {
@@ -104,11 +108,12 @@ public class MontanhaSagrada {
 		}
 	}
 
-	 private static void clearBuffer(Scanner scanner) {
-	        if (scanner.hasNextLine()) {
-	            scanner.nextLine();
-	        }
-	    }
+	private static void clearBuffer(Scanner scanner) {
+		if (scanner.hasNextLine()) {
+			scanner.nextLine();
+		}
+	}
+
 	public static void menuComandos() throws InterruptedException, IOException {
 //		MontanhaSagrada.limpaConsole();
 		System.out.print(" +--------------------------------------------------------------+\n");
@@ -154,20 +159,20 @@ public class MontanhaSagrada {
 //		menuJogador(jogador);
 //			nome, hp, ataque(base+arma),defesa(base+armadura),
 // classe, iniciativa, feitiços(as armas de mago aumenta poderes de certos feitiços),level
-		break;
+			break;
 		case 7:
 //            inventario(jogador);
-		break;
+			break;
 		case 8:
 			System.out.println("Escreva um nome para salvar o jogo");
 			Scanner entrada = new Scanner(System.in);
 			String nomeArq = entrada.nextLine();
 //			entrada.close();
-			if(SaveManipulator.salvarJogo(nomeArq))
+			if (SaveManipulator.salvarJogo(nomeArq))
 				System.out.println("Jogo Salvo com sucesso!");
 			else
-				System.out.println("Falha no Salvamento!");
-		break;
+				System.out.println("\nFalha no Salvamento!");
+			break;
 		default:
 			System.out.println("Entrada Invalida!\n");
 		}

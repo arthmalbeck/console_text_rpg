@@ -3,14 +3,13 @@ package personagem;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 
 import sistema.Vilarejo;
 
 
 
 
-public class Jogador extends Personagem implements Serializable{
+public class Jogador extends Personagem implements Serializable {
 
 //	private Inventario inventario;
 	private Interacoes interacoes;
