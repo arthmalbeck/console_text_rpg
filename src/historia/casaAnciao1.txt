@@ -1,0 +1,19 @@
+- "Ola! O Anciao esta ai?"
+
+- "Preciso falar com ele, estou tendo sonhos estranhos com frequencia."
+
+- "Acredito que ele possa me ajudar em relação a isso."
+
+Aprendiz - "Olá! Sonhos estranhos? Com certeza ele pode te ajudar, o mestre é ótimo em desvendar os mistérios que residem nos sonhos."
+
+Aprendiz - "Mas ele saiu bem cedo para coletar algumas ervas especiais na floresta."
+
+Aprendiz - "Acredito que você possa encontrá-lo por lá, mas tenha cuidado. Ultimamente essa floresta anda bem perigosa."
+
+Aprendiz - "Os tempos já não são os mesmos, sinto que algo de muito ruim está por vir."
+
+Aprendiz - "Tome muito cuidado, caso queira ir atrás dele!"
+
+- "Pode deixar, caso ele volte, avise-o sobre a minha visita."
+
+Aprendiz - "Certo. Até logo!"

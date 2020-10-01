@@ -1,0 +1,13 @@
+Viajante - "SOCORROOOO!"
+
+Bandido - "Passa tudo o que tem aí!"
+
+Viajante - "Isso é tudo o que eu tenho!"
+
+- "EII... O que está acontecendo aí?"
+
+Viajante - "Aquele ladrão me roubou... Recupere meus itens por favor!!"
+
+- "Não se preocupe... Eu irei recuperar seus itens, senhor!"
+
+Bandido - "Para recuperar esses itens, você terá que me derrotar!"
