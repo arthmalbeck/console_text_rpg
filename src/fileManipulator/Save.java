@@ -10,11 +10,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import personagem.Jogador;
-import personagem.Personagem;
 
 public class Save {
+	static ArrayList<String> nomes = new ArrayList<>();
+	
 	// serialização: gravando o objetos no arquivo binário "nomeArq"
 	protected static boolean gravarArquivoBinario(Jogador jogador, String nomeArq) {
 		File arq = new File(nomeArq + ".dat");
@@ -57,22 +59,36 @@ public class Save {
 	}
 	
 	protected static void gravarNomeArqSalvo(String nomeArq) throws IOException {
-		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(System.getProperty("user.dir")));
+		File arq = new File("saves.txt");
+		lerNomeJogosSalvos();
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(arq));
+		for (String nome : nomes) {
+			buffWrite.append(nome.toUpperCase() + "\n");
+		}
+//		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(arq));
+		if(!nomeArq.equalsIgnoreCase("") || !nomeArq.equalsIgnoreCase(" "))
 		buffWrite.append(nomeArq.toUpperCase() + "\n");
 		buffWrite.close();
 	}
 	
 	public static void lerNomeJogosSalvos() throws IOException {
-		BufferedReader buffRead = new BufferedReader(new FileReader(System.getProperty("user.dir")));
-		String linha = "";
-		System.out.println("Nome dos Jogos Salvos");
-		while (true) {
-			if (linha != null) {
-				System.out.println(linha);
-			} else
-				break;
-			linha = buffRead.readLine();
+		File arq = new File("saves.txt");
+		if (arq.exists()) {
+			BufferedReader buffRead = new BufferedReader(new FileReader(arq));
+			String linha = "";
+			System.out.print("Nome dos Jogos Salvos:");
+			while (true) {
+				if (linha != null) {
+					System.out.println(linha);
+					nomes.add(linha);
+				} else
+					break;
+				linha = buffRead.readLine();
+			}
+			buffRead.close();
+			System.out.println();
+		}else {
+			System.out.println("Nome do jogo salvo incorreto ou inexistente!");
 		}
-		buffRead.close();
 	}
 }
