@@ -20,6 +20,9 @@ public class Inimigo extends Personagem{
 
 	}
 
+	public void setAtributos(String nome, int hp, int atk, int def) {
+		
+	}
 
 	public Grau getGrau() {
 		return grau;

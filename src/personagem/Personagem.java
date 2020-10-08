@@ -8,6 +8,7 @@ public class Personagem implements Serializable{
 	private int def = 0;
 	private int hp = 0;
 	private int maxHp = 0;
+	private boolean defendido;
 	
 	public Personagem(){}
 
@@ -51,5 +52,12 @@ public class Personagem implements Serializable{
 		this.maxHp = maxHp;
 	}
 
+	public boolean isDefendido() {
+		return defendido;
+	}
+
+	public void setDefendido(boolean defendido) {
+		this.defendido = defendido;
+	}
 	
 }

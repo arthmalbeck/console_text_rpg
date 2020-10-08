@@ -13,13 +13,24 @@ public class Jogador extends Personagem implements Serializable {
 
 //	private Inventario inventario;
 	private Interacoes interacoes;
-	private int alinhamento;
 //	private Item armadura;
 //	private Item arma;
 	private Sexo sexo;
 	public String classeUltimaLocalizacao;
 	public String metodoUltimaLocalizacao;
+	private int level;
 	
+	
+
+	public int getLevel() {
+		return level;
+	}
+
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
 
 	public void checkPoint() throws ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		
@@ -58,7 +69,6 @@ public class Jogador extends Personagem implements Serializable {
 		interacoes = new Interacoes();
 //		this.setArma(null);
 //		this.setArmadura(null);
-		this.alinhamento = 0;
 //		this.getInventario().setGold(gold);
 	}
 	
