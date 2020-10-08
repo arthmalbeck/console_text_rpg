@@ -2,16 +2,11 @@ package sistema;
 
 import java.io.IOException;
 import java.util.Scanner;
-
 import fileManipulator.Leitura;
 import personagem.Jogador;
 
 public class Vilarejo {
-	
-
-	static Scanner entrada = new Scanner(System.in);
-	
-	
+	static Scanner entrada = new Scanner(System.in);	
 
 	public static void inicio() throws InterruptedException, IOException {
 		System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "introducao.txt"));
