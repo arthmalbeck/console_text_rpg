@@ -32,7 +32,10 @@ public class MontanhaSagrada {
 			switch (opcao) {
 			case 1:
 //				MontanhaSagrada.limpaConsole();
-				MontanhaSagrada.jogador = new Jogador();
+				
+				CriaJogador c = new CriaJogador();
+				MontanhaSagrada.jogador = c.criar(); 
+				
 				Vilarejo.inicio();
 				repeat = false;
 				break;

@@ -17,6 +17,7 @@ public class Jogador extends Personagem implements Serializable {
 //	private Item armadura;
 //	private Item arma;
 	private Sexo sexo;
+	private Classe classe;
 	public String classeUltimaLocalizacao;
 	public String metodoUltimaLocalizacao;
 	
@@ -37,15 +38,7 @@ public class Jogador extends Personagem implements Serializable {
 
 	
 	public Jogador() {
-//		System.out.print("Digite um nome para seu personagem: ");
-//		Scanner entrada = new Scanner(System.in);
-		super.setNome("Abner");
-//		System.out.println("Digite uma das opcoes abaixo para escolher um sexo:");
-//		System.out.println("(1) - MASCULINO");
-//		System.out.println("(2) - FEMININO");
-//		inventario = new Inventario();
-		interacoes = new Interacoes();
-//		entrada.close();
+
 	}
 	
 	public Jogador(String nome, int atk, int def, int hp, int gold){
@@ -108,5 +101,12 @@ public class Jogador extends Personagem implements Serializable {
 		this.sexo = sexo;
 	}
 	
+	public Classe getClasse() {
+		return classe;
+	}
+
+	public void setClasse(Classe classe) {
+		this.classe = classe;
+	}
 	
 }
