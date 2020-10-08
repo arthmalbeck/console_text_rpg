@@ -16,7 +16,7 @@ public class MontanhaSagrada {
 			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 
 //		MontanhaSagrada.limpaConsole();
-
+		
 		menuPrincipal();
 		escolhasMenuPrincipal(args);
 
@@ -39,8 +39,9 @@ public class MontanhaSagrada {
 			case 2:
 //				MontanhaSagrada.limpaConsole();
 				MontanhaSagrada.jogador = SaveManipulator.carregarJogo();
+//				clearBuffer(entrada);
 				MontanhaSagrada.jogador.checkPoint();
-				MontanhaSagrada.pause();
+				
 				repeat = false;
 				break;
 			case 3:
@@ -96,7 +97,7 @@ public class MontanhaSagrada {
 	}
 
 	public static int entrada() {
-		Scanner entrada = new Scanner(System.in);
+		 entrada = new Scanner(System.in);
 		String opcao = entrada.nextLine();
 
 		if (opcao.matches("^[0-9]")) {
@@ -139,8 +140,6 @@ public class MontanhaSagrada {
 		System.out.print(" +-----------------------------------------------------------------------+\n");
 		System.out.print(" |        Arthur Malmann Becker - arthmalbeck@gmail.com                  |\n");
 		System.out.print(" |        Lucas Abner Leal Silva - lucasabner98@outlook.com              |\n");
-		System.out.print(" |        Lucas Augusto Guterres Garais - lucasgarais@hotmail.com        |\n");
-		System.out.print(" |        Wagner Inacio de Oliveira - wagner.inacio16@outlook.com        |\n");
 		System.out.print(" +-----------------------------------------------------------------------+\n");
 		System.out.print(" |       Engenharia de Software - UNIPAMPA - Grupo 2 RPIII 2019-01       |\n");
 		System.out.print(" +-----------------------------------------------------------------------+\n\n");

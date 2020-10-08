@@ -21,10 +21,15 @@ public class Vilarejo {
 		Vilarejo.casa();
 	}
 
-	public static void casa() throws InterruptedException, IOException {
-		Jogador.setClassLocal(new Object(){}.getClass().getName());
-		Jogador.setMethod(new Object(){}.getClass().getEnclosingMethod().getName());
-		System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "casa.txt"));
+	public static void casa() {
+		MontanhaSagrada.jogador.setClassLocal("sistema.Vilarejo");
+		MontanhaSagrada.jogador.setMethod(new Object(){}.getClass().getEnclosingMethod().getName());
+		try {
+			System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "casa.txt"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		boolean repeat = true;
 		do {
 			System.out.print("\n (1) - Ir ate a janela               (2) - Sair da Casa\n");
@@ -32,10 +37,23 @@ public class Vilarejo {
 			int op = MontanhaSagrada.entrada();
 			switch (op) {
 			case 1:
-				System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "janela.txt"));
+				try {
+					System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "janela.txt"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				break;
 			case 2:
-		            vila();
+				try {
+					vila();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				repeat = false;
 				break;
 			case 6:

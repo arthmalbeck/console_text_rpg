@@ -17,17 +17,21 @@ public class Jogador extends Personagem implements Serializable {
 //	private Item armadura;
 //	private Item arma;
 	private Sexo sexo;
-	private static String classeUltimaLocalizacao;
-	private static String metodoUltimaLocalizacao;
+	public String classeUltimaLocalizacao;
+	public String metodoUltimaLocalizacao;
 	
 
 	public void checkPoint() throws ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Class.forName(classeUltimaLocalizacao).getMethod(metodoUltimaLocalizacao, Jogador.class).invoke(null, this);
-
-				System.out.println(Vilarejo.class.getName());
-		for (Method i : Vilarejo.class.getDeclaredMethods()) {
-			System.out.println(i.getClass().getName());
-		}
+		
+		Vilarejo.class.getMethod(metodoUltimaLocalizacao).invoke(null);
+		
+//		String array[] = new String[2];
+//System.out.println(classeUltimaLocalizacao.split("$"));
+//System.out.println(metodoUltimaLocalizacao);
+//				System.out.println(Vilarejo.class.getName());
+//		for (Method i : Vilarejo.class.getDeclaredMethods()) {
+//			System.out.println(i.getClass().getName());
+//		}
 		
 	}
 
@@ -64,8 +68,8 @@ public class Jogador extends Personagem implements Serializable {
 	}
 
 
-	public static void setClassLocal(String classeUltimaLocalizacao) {
-		Jogador.classeUltimaLocalizacao = classeUltimaLocalizacao;
+	public void setClassLocal(String classeUltimaLocalizacao) {
+		this.classeUltimaLocalizacao = classeUltimaLocalizacao;
 	}
 
 
@@ -74,8 +78,8 @@ public class Jogador extends Personagem implements Serializable {
 	}
 
 
-	public static void setMethod(String metodoUltimaLocalizacao) {
-		Jogador.metodoUltimaLocalizacao = metodoUltimaLocalizacao;
+	public void setMethod(String metodoUltimaLocalizacao) {
+		this.metodoUltimaLocalizacao = metodoUltimaLocalizacao;
 	}
 	
 

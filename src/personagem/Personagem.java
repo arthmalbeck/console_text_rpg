@@ -1,12 +1,13 @@
 package personagem;
 
-public class Personagem{
+import java.io.Serializable;
+
+public class Personagem implements Serializable{
 	private String nome = "";
 	private int atk = 0;
 	private int def = 0;
 	private int hp = 0;
 	private int maxHp = 0;
-	private boolean defendido;
 	
 	public Personagem(){}
 
@@ -50,12 +51,5 @@ public class Personagem{
 		this.maxHp = maxHp;
 	}
 
-	public boolean isDefendido() {
-		return defendido;
-	}
-
-	public void setDefendido(boolean defendido) {
-		this.defendido = defendido;
-	}
 	
 }
