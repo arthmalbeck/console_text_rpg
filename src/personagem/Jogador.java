@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import item.Item;
 import sistema.Vilarejo;
 
 
@@ -11,27 +12,15 @@ import sistema.Vilarejo;
 
 public class Jogador extends Personagem implements Serializable {
 
-//	private Inventario inventario;
+	private Item[][] inventario;
 	private Interacoes interacoes;
-//	private Item armadura;
-//	private Item arma;
+	private Item armadura;
+	private Item arma;
 	private Sexo sexo;
 	private Classe classe;
 	public String classeUltimaLocalizacao;
 	public String metodoUltimaLocalizacao;
 	private int level;
-	
-	
-
-	public int getLevel() {
-		return level;
-	}
-
-
-	public void setLevel(int level) {
-		this.level = level;
-	}
-
 
 	public void checkPoint() throws ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		
@@ -46,7 +35,6 @@ public class Jogador extends Personagem implements Serializable {
 //		}
 		
 	}
-
 	
 	public Jogador() {
 
@@ -60,11 +48,18 @@ public class Jogador extends Personagem implements Serializable {
 		this.setMaxHp(hp);
 //		inventario = new Inventario();
 		interacoes = new Interacoes();
-//		this.setArma(null);
-//		this.setArmadura(null);
-//		this.getInventario().setGold(gold);
+		this.setArma(null);
+		this.setArmadura(null);
 	}
 	
+	public int getLevel() {
+		return level;
+	}
+
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
 
 	public String getClassLocal() {
 		return classeUltimaLocalizacao;
@@ -84,8 +79,6 @@ public class Jogador extends Personagem implements Serializable {
 	public void setMethod(String metodoUltimaLocalizacao) {
 		this.metodoUltimaLocalizacao = metodoUltimaLocalizacao;
 	}
-	
-
 
 	public Interacoes getInteracoes() {
 		return interacoes;
@@ -94,15 +87,31 @@ public class Jogador extends Personagem implements Serializable {
 	public void setInteracoes(Interacoes interacoes) {
 		this.interacoes = interacoes;
 	}
-
-	public int getAlinhamento() {
-		return alinhamento;
-	}
-
-	public void setAlinhamento(int alinhamento) {
-		this.alinhamento = alinhamento;
-	}
 	
+	public Item[][] getInventario() {
+		return inventario;
+	}
+
+	public void setInventario(Item[][] inventario) {
+		this.inventario = inventario;
+	}
+
+	public Item getArmadura() {
+		return armadura;
+	}
+
+	public void setArmadura(Item armadura) {
+		this.armadura = armadura;
+	}
+
+	public Item getArma() {
+		return arma;
+	}
+
+	public void setArma(Item arma) {
+		this.arma = arma;
+	}
+
 	public Sexo getSexo() {
 		return sexo;
 	}
