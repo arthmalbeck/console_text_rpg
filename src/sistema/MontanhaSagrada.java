@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
-import fileManipulator.SaveManipulator;
 import personagem.Jogador;
 
 public class MontanhaSagrada {
@@ -14,12 +13,8 @@ public class MontanhaSagrada {
 	public static void main(String[] args)
 			throws InterruptedException, IOException, ClassNotFoundException, NoSuchMethodException, SecurityException,
 			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-
-//		MontanhaSagrada.limpaConsole();
-		
 		menuPrincipal();
 		escolhasMenuPrincipal(args);
-
 	}
 
 	private static void escolhasMenuPrincipal(String[] args)
@@ -28,29 +23,19 @@ public class MontanhaSagrada {
 		boolean repeat = true;
 		do {
 			System.out.print("\n Opcao: ");
-			int opcao = MontanhaSagrada.entrada();
+			int opcao = LeitorEntradas.entrada();
 			switch (opcao) {
 			case 1:
-//				MontanhaSagrada.limpaConsole();
-				MontanhaSagrada.jogador = new Jogador(); 
-				
+				MontanhaSagrada.jogador = new Jogador();
 				Vilarejo.inicio();
 				repeat = false;
 				break;
 			case 2:
-//				MontanhaSagrada.limpaConsole();
-				MontanhaSagrada.jogador = SaveManipulator.carregarJogo();
-//				clearBuffer(entrada);
-				MontanhaSagrada.jogador.checkPoint();
-				
-				repeat = false;
-				break;
-			case 3:
 				MontanhaSagrada.menuComandos();
 				main(args);
 				repeat = false;
 				break;
-			case 4:
+			case 3:
 				MontanhaSagrada.creditos();
 				main(args);
 				repeat = false;
@@ -78,46 +63,14 @@ public class MontanhaSagrada {
 		System.out.print(" |                                                                       |\n");
 		System.out.print(" +-----------------------------------------------------------------------+\n");
 		System.out.print(" |                                                                       |\n");
-		System.out.print(" | (1) Novo Jogo | (2) Continuar | (3) Menu de Comandos | (4) Creditos   |\n");
+		System.out.print(" |          (1) Novo Jogo | (2) Menu de Comandos | (3) Creditos          |\n");
 		System.out.print(" |                                                                       |\n");
 		System.out.print(" +-----------------------------------------------------------------------+\n");
 		System.out.print(" |                   Engenharia de Software - UNIPAMPA                   |\n");
 		System.out.print(" +-----------------------------------------------------------------------+\n\n");
 	}
 
-	public static void limpaConsole() throws InterruptedException, IOException {
-		// Limpa a tela no windows, no linux e no MacOS
-		if (System.getProperty("os.name").contains("Windows")) {
-			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-			System.out.println("hi1");
-		} else {
-			Runtime.getRuntime().exec("clear");
-			System.out.println("hi");
-		}
-
-	}
-
-	public static int entrada() {
-		 entrada = new Scanner(System.in);
-		String opcao = entrada.nextLine();
-
-		if (opcao.matches("^[0-9]")) {
-//            entrada.close();
-			return Integer.parseInt(opcao);
-		} else {
-//            entrada.close();
-			return -1;
-		}
-	}
-
-	private static void clearBuffer(Scanner scanner) {
-		if (scanner.hasNextLine()) {
-			scanner.nextLine();
-		}
-	}
-
 	public static void menuComandos() throws InterruptedException, IOException {
-//		MontanhaSagrada.limpaConsole();
 		System.out.print(" +--------------------------------------------------------------+\n");
 		System.out.print(" |                Menu de opcoes ocultas do jogo                |\n");
 		System.out.print(" +---------------+----------------------------------------------+\n");
@@ -127,13 +80,11 @@ public class MontanhaSagrada {
 		System.out.print(" +---------------+----------------------------------------------+\n");
 		System.out.print(" |    Tecla 7    |             Abrir Inventario                 |\n");
 		System.out.print(" +---------------+----------------------------------------------+\n");
-		System.out.print(" |    Tecla 8    |                Salvar Jogo                   |\n");
 		System.out.print(" +---------------+----------------------------------------------+\n\n");
-		MontanhaSagrada.pause();
+		LeitorEntradas.pause();
 	}
 
 	public static void creditos() throws InterruptedException, IOException {
-//		MontanhaSagrada.limpaConsole();
 		System.out.print(" +-----------------------------------------------------------------------+\n");
 		System.out.print(" |                               CREDITOS                                |\n");
 		System.out.print(" +-----------------------------------------------------------------------+\n");
@@ -142,40 +93,9 @@ public class MontanhaSagrada {
 		System.out.print(" |        Arthur Malmann Becker - arthmalbeck@gmail.com                  |\n");
 		System.out.print(" |        Lucas Abner Leal Silva - lucasabner98@outlook.com              |\n");
 		System.out.print(" +-----------------------------------------------------------------------+\n");
-		System.out.print(" |       Engenharia de Software - UNIPAMPA - Grupo 2 RPIII 2019-01       |\n");
+		System.out.print(" |       Engenharia de Software - UNIPAMPA                               |\n");
 		System.out.print(" +-----------------------------------------------------------------------+\n\n");
-		MontanhaSagrada.pause();
-	}
-
-	public static void pause() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Pressione ENTER para continuar...");
-		scanner.nextLine();
-	}
-
-	public static void opcoesAlternativas(int op) {
-		switch (op) {
-		case 6:
-//		menuJogador(jogador);
-//			nome, hp, ataque(base+arma),defesa(base+armadura),
-// classe, iniciativa, feitiços(as armas de mago aumenta poderes de certos feitiços),level
-			break;
-		case 7:
-//            inventario(jogador);
-			break;
-		case 8:
-			System.out.println("Escreva um nome para salvar o jogo");
-			Scanner entrada = new Scanner(System.in);
-			String nomeArq = entrada.nextLine();
-//			entrada.close();
-			if (SaveManipulator.salvarJogo(nomeArq))
-				System.out.println("Jogo Salvo com sucesso!");
-			else
-				System.out.println("\nFalha no Salvamento!");
-			break;
-		default:
-			System.out.println("Entrada Invalida!\n");
-		}
+		LeitorEntradas.pause();
 	}
 
 }

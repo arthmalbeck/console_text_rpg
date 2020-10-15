@@ -1,5 +1,5 @@
 package personagem;
 
 public enum Classe {
-	GUERREIRO, CEIFEIRO, ARQUEIRO
+	GUERREIRO, CEIFEIRO, ESCUDEIRO
 }

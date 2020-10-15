@@ -1,3 +1,19 @@
-"Voce esta no Centro da Vila, dizem que este vilarejo e o unico da regiao. Para alguns e um local sagrado, mas para outros nao passa de um lugar almadicoado."
 
-"Explore a vila escolhendo uma das direcoes!!"
+- "Ola Peter!"
+
+Comerciante Peter - "Ola jovem o que deseja, hoje o estoque esta bem alto,com as melhores mercadorias da regiao"
+
+- "Assim...não to com nenhum trocado no bolso agora"
+
+Comerciante Peter- "Nao duvido amigo, ontem voce voltou literalmente pelado para casa"
+
+- "Eu me lembro vagamente de lhe cumprimentar ontem, que vergonha, nao lembro o que fiz e preciso encontrar minhas coisas"
+
+Comerciante Peter- "Sim, ontem voce passou por aqui e seguio para o sul, com uma multidao atras, todos foram ver o duelo de voce e o billy o espinhudo"
+
+- "Serio, quer dizer entao que finalmente bati naquele covarde, obrigado pela informacao"
+
+Comerciante Peter - "Eee..mais ou menos isso, ate mais amigo"
+
+
+

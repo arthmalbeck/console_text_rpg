@@ -2,6 +2,16 @@
 
 - "Hmm...Como imaginei, as galinhas ja botaram, vou pegar alguns!"
 
-*Voce obteve 3 "Ovos grandes." Para acessar seu Inventario aperte a tecla '7'. Opcao: 7*
+*Voce obteve um "Ovos grande(Regenera 5Hp)" Para acessar seu Inventario aperte a tecla '7'. Opcao: 7*
 
 - "Pronto, hora de voltar!"
+
+~Esbarra com alguem na porta~
+
+- "Ei voce, o que faz aqui na porta do meu celeiro"
+
+Jennet - "Ola, meu nome é Jennet, estou so de passagem visitando alguns pontos da cidade"
+
+Jennet - "Algum problema?"
+
+~A mulher de grande porte e musculos, pega algo da mochila e toma postura de batalha"

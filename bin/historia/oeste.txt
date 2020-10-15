@@ -1,3 +1,5 @@
-~ Você avista uma estrada em construção com várias pessoas trabalhando nela. ~
+~ Você segue rumo ao oeste, para a casa do anciao da vila~
 
-~ Você se depara com a barraca do Ferreiro, ele parece estar aflito com alguma coisa. ~
+Anciao - "Ola pequeno garfanhoto, nao precisa dizer nada eu sei do que precisa, eu sei de tudo, e tudo ha um preco, se me vencer em uma luta, tera o meu apreco"
+
+~O Anciao loucamente empunha seu cajado e pula em cima de voce~

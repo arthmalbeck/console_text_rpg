@@ -1,15 +1,14 @@
 package personagem;
 
 import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
 import item.Arma;
 import item.Armadura;
+import item.Bugiganga;
 import item.Consumivel;
 import item.Item;
 import sistema.LeitorEntradas;
-import sistema.Vilarejo;
 
 public class Jogador extends Personagem implements Serializable {
 
@@ -19,22 +18,13 @@ public class Jogador extends Personagem implements Serializable {
 	private Item arma;
 	private Sexo sexo;
 	private Classe classe;
-	public String classeUltimaLocalizacao;
-	public String metodoUltimaLocalizacao;
-	private int level;
 	static Scanner scanner = new Scanner(System.in);
 
 	public Jogador() {
-		System.out.print("Digite um nome para seu personagem: ");
 		this.setNome(LeitorEntradas.lerNome());
 		this.setSexo(LeitorEntradas.lerSexo());
 		this.setClasse(LeitorEntradas.lerClasse());
 		this.setInteracoes(new Interacoes());
-		this.setAtk(10);
-		this.setLevel(1);
-		this.setDef(13);
-		this.setHp(18);
-		this.setMaxHp(22);
 		inventario = new Item[3][3];
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
@@ -56,13 +46,6 @@ public class Jogador extends Personagem implements Serializable {
 	}
 
 	public void listarItens() {
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				System.out.print("[" + i + "" + j + "]" + inventario[i][j].getNome() + " | ");
-			}
-			System.out.println();
-		}
-		add();
 		System.out.println("Inventario");
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
@@ -81,73 +64,106 @@ public class Jogador extends Personagem implements Serializable {
 			} else {
 				switch (inventario[op[0]][op[1]].getClass().getName()) {
 				case "item.Arma":
+					Arma arma = (Arma) inventario[op[0]][op[1]];
+					System.out.println("Voce Equipou o item" + arma.getNome());
 					this.arma = inventario[op[0]][op[1]];
 					inventario[op[0]][op[1]] = new Item();
+					this.setAtk(getAtk() +  arma.getAtk());
+					repeat = false;
 					break;
 				case "item.Armadura":
-					this.armadura = inventario[op[0]][op[1]];
+					Armadura armadura =  (Armadura) inventario[op[0]][op[1]];
+					System.out.println("Voce Equipou o item" + armadura.getNome());
+					this.armadura = armadura;
 					inventario[op[0]][op[1]] = new Item();
-				default:
+					this.setDef(getDef() +  armadura.getDef());
+					repeat = false;
+					break;
+				case "item.Consumivel":
 					Consumivel c = (Consumivel) inventario[op[0]][op[1]];
+					System.out.println("Voce Utiizou o item" + c.getNome());
 					this.setHp(this.getHp() + c.getQntAumento());
 					inventario[op[0]][op[1]] = new Item();
+					repeat = false;
 					break;
+				case "item.Bugiganga":
+					Bugiganga b = (Bugiganga) inventario[op[0]][op[1]];
+					System.out.println(b.getDescricao());
+					repeat = false;
+					break;
+				default:
+					System.out.println("Nao contem itens neste espaco");
+					repeat = true;
 				}
-				repeat = false;
+				
 			}
 		} while (repeat);
 	}
 
-	public void add() {
+	public Item getArmadura() {
+		return armadura;
+	}
+
+	public void setArmadura(Item armadura) {
+		this.armadura = armadura;
+	}
+
+	public Item getArma() {
+		return arma;
+	}
+
+	public void setArma(Item arma) {
+		this.arma = arma;
+	}
+
+	public void adicionarItem(Item item) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				inventario[i][j] = Arma.pegarEspadaCurta();
+				if(inventario[i][j].getNome().equals("Vazio")) {
+				inventario[i][j] = item;
+				return;
+				}
 			}
 		}
-
 	}
 
-	public int getLevel() {
-		return level;
+	
+	
+	public void consumiveis() {
+		System.out.println("Inventario");
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				System.out.print("[" + i + "" + j + "]" + inventario[i][j].getNome() + " | ");
+			}
+			System.out.println();
+		}
+		boolean repeat = true;
+		do {
+			System.out.println("Digite o codigo do item CONSUMIVEL, para usa-lo, ou 9 para sair");
+			int op[] = LeitorEntradas.lerItem();
+			if (op == null) {
+				System.out.println("Entrada Invalida!\n");
+			} else if (op[0] == 9) {
+				repeat = false;
+			} else {
+				switch (inventario[op[0]][op[1]].getClass().getName()) {
+				case "item.Consumivel":
+					Consumivel c = (Consumivel) inventario[op[0]][op[1]];
+					System.out.println("Voce Utiizou o item" + c.getNome());
+					this.setHp(this.getHp() + c.getQntAumento());
+					inventario[op[0]][op[1]] = new Item();
+					repeat = false;
+					break;
+				default:
+					System.out.println("Item invalido\n");
+				}
+			}
+		} while (repeat);
 	}
 
-	public void checkPoint() throws ClassNotFoundException, NoSuchMethodException, SecurityException,
-			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-
-		Vilarejo.class.getMethod(metodoUltimaLocalizacao).invoke(null);
-
-//		String array[] = new String[2];
-//System.out.println(classeUltimaLocalizacao.split("$"));
-//System.out.println(metodoUltimaLocalizacao);
-//				System.out.println(Vilarejo.class.getName());
-//		for (Method i : Vilarejo.class.getDeclaredMethods()) {
-//			System.out.println(i.getClass().getName());
-//		}
-
-	}
 
 	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
-	}
-
-	public String getClassLocal() {
-		return classeUltimaLocalizacao;
-	}
-
-	public void setClassLocal(String classeUltimaLocalizacao) {
-		this.classeUltimaLocalizacao = classeUltimaLocalizacao;
-	}
-
-	public String getMethod() {
-		return metodoUltimaLocalizacao;
-	}
-
-	public void setMethod(String metodoUltimaLocalizacao) {
-		this.metodoUltimaLocalizacao = metodoUltimaLocalizacao;
 	}
 
 	public Interacoes getInteracoes() {
@@ -171,6 +187,18 @@ public class Jogador extends Personagem implements Serializable {
 	}
 
 	public void setClasse(Classe classe) {
+		if(classe.name().equalsIgnoreCase("Guerreiro")){
+			this.setAtk(12);// +3 espada
+			this.setDef(10);// +1 defesa
+		}else if(classe.name().equalsIgnoreCase("Ceifeiro")){
+			this.setAtk(11);// +2 espada
+			this.setDef(11);// +2 defesa
+		}else {
+			this.setAtk(11);// +1 espada
+			this.setDef(12);// +3 defesa
+		}
+		this.setHp(20);
+		this.setMaxHp(25);
 		this.classe = classe;
 	}
 

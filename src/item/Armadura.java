@@ -1,37 +1,49 @@
 package item;
 
+import personagem.Jogador;
+
 public class Armadura extends Item{
 
 	private int def;
 	
 	public Armadura() {
 		Armadura nada = new Armadura();
-		nada.setNome("Sem Armadura");
+		nada.setNome("Sem Armaduradura");
 		nada.setDef(0);
 	}
 
-	public static Item pegarArmaduraAntiga() {
-		Armadura armaduraAntiga = new Armadura();
-		armaduraAntiga.setNome("Armadura Antiga");
-		armaduraAntiga.setDef(5);
-
-		return armaduraAntiga;
+	public static Item pegarArmadura(Jogador jogador) {
+		if (jogador.getClasse().name().equalsIgnoreCase("Guerreiro")) {
+			return ArmaduraduraLeve();
+		} else if (jogador.getClasse().name().equalsIgnoreCase("Ceifeiro")) {
+			return ArmaduraduraMedia();
+		} else {
+			return ArmaduraduraPesada();
+		}
 	}
 
-	public static Item pegarCasacoPele() {
-		Armadura casacoPele = new Armadura();
-		casacoPele.setNome("Casaco de Pele");
-		casacoPele.setDef(4);
+	public static Item ArmaduraduraPesada() {
+		Armadura ArmaduraduraPesada = new Armadura();
+		ArmaduraduraPesada.setNome("Armadura Pesada");
+		ArmaduraduraPesada.setDef(3);
 
-		return casacoPele;
+		return ArmaduraduraPesada;
 	}
-	
-	public static Item pegarCasacoLa() {
-		Armadura casacoPele = new Armadura();
-		casacoPele.setNome("Casaco de Lã");
-		casacoPele.setDef(3);
 
-		return casacoPele;
+	public static Item ArmaduraduraMedia() {
+		Armadura ArmaduraduraMedia = new Armadura();
+		ArmaduraduraMedia.setNome("Armadura Media");
+		ArmaduraduraMedia.setDef(2);
+
+		return ArmaduraduraMedia ;
+	}
+
+	public static Item ArmaduraduraLeve() {
+		Armadura ArmaduraduraLeve = new Armadura();
+		ArmaduraduraLeve.setNome("Armadura Leve");
+		ArmaduraduraLeve.setDef(1);
+
+		return ArmaduraduraLeve;
 	}
 
 	public int getDef() {

@@ -4,7 +4,6 @@ package personagem;
 
 public class Inimigo extends Personagem{
 	
-	private Grau grau;
 	
 	public Inimigo(){
 		
@@ -23,16 +22,5 @@ public class Inimigo extends Personagem{
 		
 	}
 
-	public Grau getGrau() {
-		return grau;
-	}
-
-
-	public void setGrau(Grau grau) {
-		this.grau = grau;
-	}
-	
-	
-	
 
 }

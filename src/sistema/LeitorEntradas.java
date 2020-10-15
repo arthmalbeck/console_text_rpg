@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
-import fileManipulator.SaveManipulator;
 import personagem.Classe;
 import personagem.Jogador;
 import personagem.Sexo;
@@ -70,7 +69,7 @@ public class LeitorEntradas {
 		boolean repeat = true;
 		while(repeat) {
 			System.out.println("Digite uma das opcoes abaixo para escolher sua classe:");
-			System.out.println("(1) - GUERREIRO   |  (2) - CEIFEIRO   |  (3) - ARQUEIRO");
+			System.out.println("(1) - GUERREIRO   |  (2) - CEIFEIRO   |  (3) - ESCUDEIRO");
 			op = entrada();
 			switch (op) {
 			case 1:
@@ -78,7 +77,7 @@ public class LeitorEntradas {
 			case 2:
 				return Classe.CEIFEIRO;
 			case 3: 
-				return Classe.ARQUEIRO;
+				return Classe.ESCUDEIRO;
 			default:
 				System.out.println("Entrada Invalida!\n");
 				break;
@@ -111,27 +110,27 @@ public class LeitorEntradas {
 
 	public static void opcoesAlternativas(int op) {
 		switch (op) {
-		case 6:
-//		menuJogador(jogador);
-//			nome, hp, ataque(base+arma),defesa(base+armadura),
-// classe, iniciativa, feitiços(as armas de mago aumenta poderes de certos feitiços),level
-			break;
 		case 7:
-            MontanhaSagrada.jogador.listarItens();
+			System.out.println("Status do Jogador");
+			System.out.println("Nome: " + MontanhaSagrada.jogador.getNome());
+			System.out.println("Atk: " + MontanhaSagrada.jogador.getAtk());
+			System.out.println("Def: " + MontanhaSagrada.jogador.getDef());
+			System.out.println("Hp: " + MontanhaSagrada.jogador.getHp());
+			System.out.println("HpMax: " + MontanhaSagrada.jogador.getMaxHp());
+			System.out.println("Arma: " + MontanhaSagrada.jogador.getArma().getNome());
+			System.out.println("Armadura: " + MontanhaSagrada.jogador.getArmadura().getNome());
 			break;
 		case 8:
-			System.out.println("Escreva um nome para salvar o jogo");
-			Scanner entrada = new Scanner(System.in);
-			String nomeArq = entrada.nextLine();
-//			entrada.close();
-			if (SaveManipulator.salvarJogo(nomeArq))
-				System.out.println("Jogo Salvo com sucesso!");
-			else
-				System.out.println("\nFalha no Salvamento!");
+            MontanhaSagrada.jogador.listarItens();
 			break;
 		default:
 			System.out.println("Entrada Invalida!\n");
 		}
 	}
 
+	public static void pause() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Pressione ENTER para continuar...");
+		scanner.nextLine();
+	}
 }
