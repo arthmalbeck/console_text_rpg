@@ -39,7 +39,7 @@ public class Vilarejo {
 			case 7:
 			case 8:
 			default:
-				MontanhaSagrada.opcoesAlternativas(op);
+				LeitorEntradas.opcoesAlternativas(op);
 				break;
 			}
 		} while (repeat);
@@ -70,7 +70,7 @@ public class Vilarejo {
 			case 7:
 			case 8:
 			default:
-				MontanhaSagrada.opcoesAlternativas(op);
+				LeitorEntradas.opcoesAlternativas(op);
 				break;
 			}
 		}

@@ -50,6 +50,9 @@ public class Personagem implements Serializable{
 	}
 	
 	public void setHp(int hp) {
+		if(hp > maxHp) {
+		hp = maxHp;
+		}
 		this.hp = hp;
 	}
 	

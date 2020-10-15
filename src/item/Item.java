@@ -1,36 +1,17 @@
 package item;
 
-public abstract class Item {
-
-	private int id;
+public class Item {
 	private String nome;
-	private String desc;
-	private Efeito efeito;
 	
+	public Item() {
+		this.nome = "Vazio";
+	}
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public String getDesc() {
-		return desc;
-	}
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-	public Efeito getEfeito() {
-		return efeito;
-	}
-	public void setEfeito(Efeito efeito) {
-		this.efeito = efeito;
 	}
 	
 }
