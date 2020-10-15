@@ -21,7 +21,7 @@ public class Vilarejo {
 	}
 
 	public static void casa() throws IOException, InterruptedException {
-		System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "casa.txt"));
+		System.out.println("~Voce esta em casa~");
 
 		boolean repeat = true;
 		do {

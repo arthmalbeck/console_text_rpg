@@ -7,9 +7,8 @@ public class Armadura extends Item{
 	private int def;
 	
 	public Armadura() {
-		Armadura nada = new Armadura();
-		nada.setNome("Sem Armaduradura");
-		nada.setDef(0);
+		this.setNome("Sem Armadura");
+		this.setDef(0);
 	}
 
 	public static Item pegarArmadura(Jogador jogador) {

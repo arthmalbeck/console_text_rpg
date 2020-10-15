@@ -7,9 +7,8 @@ public class Arma extends Item {
 	private int atk;
 
 	public Arma() {
-		Arma nada = new Arma();
-		nada.setNome("Sem Arma");
-		nada.setAtk(0);
+		this.setNome("Sem Arma");
+		this.setAtk(0);
 	}
 
 	public static Item pegarEspada(Jogador jogador) {

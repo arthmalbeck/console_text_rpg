@@ -125,27 +125,28 @@ public abstract class Batalha {
 		int iniciativaI = random(1, 20);
 
 		boolean repeat = true;
-		while (repeat)
+		while (repeat) {
 			System.out.println(
 					"A batalha esta prestes a comecar, Digite (1)- para tentar fugir   (2) - Para continuar a batalha");
-		opc = LeitorEntradas.entrada();
-		switch (opc) {
-		case 1:
-			System.out.println("Sorteando valor de 1 a 20, se tirar mais que 10, voce consegue fugir");
-			if (random(1, 20) > 10) {
-				System.out.println("Voce conseguiu dar uma escapada da batalha");
-				numInimigo += 10;
-				return;
-			} else {
-				System.out.println("Voce nao conseguiu fugir da batalha");
+			opc = LeitorEntradas.entrada();
+			switch (opc) {
+			case 1:
+				System.out.println("Sorteando valor de 1 a 20, se tirar mais que 10, voce consegue fugir");
+				if (random(1, 20) > 10) {
+					System.out.println("Voce conseguiu dar uma escapada da batalha");
+					numInimigo += 10;
+					return;
+				} else {
+					System.out.println("Voce nao conseguiu fugir da batalha");
+					repeat = false;
+				}
+				break;
+			case 2:
 				repeat = false;
+				break;
+			default:
+				LeitorEntradas.opcoesAlternativas(opc);
 			}
-			break;
-		case 2:
-			repeat = false;
-			break;
-		default:
-			LeitorEntradas.opcoesAlternativas(opc);
 		}
 
 		System.out.println("Sorteando um valor de iniciativa para ver quem começa a batalha");
