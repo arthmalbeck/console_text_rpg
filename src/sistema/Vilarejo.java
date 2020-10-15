@@ -10,21 +10,29 @@ import item.Bugiganga;
 
 public class Vilarejo {
 	static Scanner entrada = new Scanner(System.in);
+	private static boolean r = false;
 
 	public static void inicio() throws InterruptedException, IOException {
-		System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "introducao.txt"));
-		LeitorEntradas.pause();
-		System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "reflexao.txt"));
-		LeitorEntradas.pause();
+//		System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "introduction.txt"));
+		if(!r) {
+		System.out.println("\n Voce recebeu uma carta da guilda localizada na montanha sagrada, os Orizaba \n Quando disponivel o menu de opcoes, digite 7 para abrir o inventario, depois, digite o codigo da carta para ler");
+		System.out.println(MontanhaSagrada.jogador.getNome() + " - Cacetada, nao acredito que fui aprovado, "
+				+ "logo agora que perdi minha arma e armadura, na noite de ontem,\nParece que minhas coisas"
+				+ " não estao aqui,tenho que encontrar elas logo, pior que nao me lembro muito bem o que aconteceu "
+				+ "ontem\n\n~Barriga Roncando~\n\nCom essa fome ainda, fica dificil lembrar de algo, talvez no celeiro eu encontre alguma coisa para"
+				+ " comer\n*Durante sua jornada voce se encontrara com certos desafios, por isso, colete recursos e recupere seus itens\nPara guiar seu personagem escolha uma  "
+				+ "entre as alternativas.\nLembre-se de que algumas escolhas sao irreversiveis!");
 		MontanhaSagrada.jogador.adicionarItem(Bugiganga.pegarCarta(MontanhaSagrada.jogador));
 		Vilarejo.casa();
+		r = true;
+		}
 	}
 
 	public static void casa() throws IOException, InterruptedException {
 		System.out.println("\n ~Voce esta em casa~");
 
 		boolean repeat = true;
-		do {
+		while(repeat) {
 			System.out.print("\n (1) - Sair da Casa(Batalha Iminente)     (2) - Ir ate a varanda \n");
 			System.out.print("\n Opcao: ");
 			int op = LeitorEntradas.entrada();
@@ -42,7 +50,7 @@ public class Vilarejo {
 				LeitorEntradas.opcoesAlternativas(op);
 				break;
 			}
-		} while (repeat);
+		}
 
 	}
 

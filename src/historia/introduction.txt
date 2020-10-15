@@ -1,0 +1,2 @@
+Voce recebeu uma carta da guilda localizada na montanha sagrada, os Orizaba!
+Quando disponivel o menu de opcoes, digite 7 para abrir o inventario, depois, digite o codigo da carta para ler

@@ -57,7 +57,6 @@ public class LeitorEntradas {
 			case 2: 
 				repeat = true;
 			default:
-				System.out.println("Entrada Invalida!\n");
 			}
 		}while(repeat);
 		return null;
@@ -113,6 +112,8 @@ public class LeitorEntradas {
 		case 7:
 			System.out.println("Status do Jogador");
 			System.out.println("Nome: " + MontanhaSagrada.jogador.getNome());
+			System.out.println("Sexo: " + MontanhaSagrada.jogador.getSexo().name().toLowerCase());
+			System.out.println("Classe : " + MontanhaSagrada.jogador.getClasse().name().toLowerCase());
 			System.out.println("Atk: " + MontanhaSagrada.jogador.getAtk());
 			System.out.println("Def: " + MontanhaSagrada.jogador.getDef());
 			System.out.println("Hp: " + MontanhaSagrada.jogador.getHp());

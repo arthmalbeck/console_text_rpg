@@ -14,14 +14,8 @@ public class MontanhaSagrada {
 			throws InterruptedException, IOException, ClassNotFoundException, NoSuchMethodException, SecurityException,
 			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		menuPrincipal();
-		escolhasMenuPrincipal(args);
-	}
-
-	private static void escolhasMenuPrincipal(String[] args)
-			throws InterruptedException, IOException, ClassNotFoundException, NoSuchMethodException, SecurityException,
-			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		boolean repeat = true;
-		do {
+		while(repeat) {
 			System.out.print("\n Opcao: ");
 			int opcao = LeitorEntradas.entrada();
 			switch (opcao) {
@@ -43,8 +37,10 @@ public class MontanhaSagrada {
 			default:
 				System.out.println("\nEntrada Invalida!\n");
 			}
-		} while (repeat);
+		}
+		
 	}
+
 
 	private static void menuPrincipal() {
 		System.out.print(" +----------------------------------------------------------------------+\n");
@@ -76,9 +72,9 @@ public class MontanhaSagrada {
 		System.out.print(" +---------------+----------------------------------------------+\n");
 		System.out.print(" |     Tecla:    |                   Acao:                      |\n");
 		System.out.print(" +---------------+----------------------------------------------+\n");
-		System.out.print(" |    Tecla 6    |           Abrir Menu do Jogador              |\n");
+		System.out.print(" |    Tecla 7   |           Abrir Menu do Jogador              |\n");
 		System.out.print(" +---------------+----------------------------------------------+\n");
-		System.out.print(" |    Tecla 7    |             Abrir Inventario                 |\n");
+		System.out.print(" |    Tecla 8   |             Abrir Inventario                 |\n");
 		System.out.print(" +---------------+----------------------------------------------+\n");
 		System.out.print(" +---------------+----------------------------------------------+\n\n");
 		LeitorEntradas.pause();

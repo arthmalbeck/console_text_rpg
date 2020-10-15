@@ -8,8 +8,8 @@ public class Bugiganga extends Item{
 	public static Item pegarCarta(Jogador jogador) {
 		Bugiganga carta = new Bugiganga();
 		carta.setNome("Carta Guilda");
-		carta.setDescricao("** Carta de aceitcao **\n" +
-				"Prezado " + jogador.getNome() + "\n" + 
+		carta.setDescricao("** Carta de aceitacao **\n" +
+				"Prezado " + jogador.getNome() + ",\n" + 
 				"Temos o prazer de informar que você foi aceito na Guilda Orizaba.\n" + 
 				"Os soldados da classe " + jogador.getClasse().name() + " sao obrigados a realizar a prova final, entao, certifique-se de que a maior atencao possivel seja prestada a sua lista de objetivo:\n" + 
 				"- Ir para o norte do vilarejo Oishy\n" + 

@@ -28,7 +28,7 @@ public abstract class Batalha {
 		}
 		switch (numInimigo) {
 		case 1:
-			System.out.println("Urubu espantado com sucesso!");
+			System.out.println("Abutre espantado com sucesso!");
 			break;
 		case 10:
 			System.out.println(

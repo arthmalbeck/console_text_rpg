@@ -44,6 +44,22 @@ public class Jogador extends Personagem implements Serializable {
 		this.inventario = new Item[3][3];
 		interacoes = new Interacoes();
 	}
+	
+	public void setClasse(Classe classe) {
+		if(classe.name().equalsIgnoreCase("Guerreiro")){
+			this.setAtk(12);// +3 espada
+			this.setDef(10);// +1 defesa
+		}else if(classe.name().equalsIgnoreCase("Ceifeiro")){
+			this.setAtk(11);// +2 espada
+			this.setDef(11);// +2 defesa
+		}else {
+			this.setAtk(11);// +1 espada
+			this.setDef(12);// +3 defesa
+		}
+		this.setHp(20);
+		this.setMaxHp(25);
+		this.classe = classe;
+	}
 
 	public void listarItens() {
 		System.out.println("Inventario");
@@ -186,20 +202,6 @@ public class Jogador extends Personagem implements Serializable {
 		return classe;
 	}
 
-	public void setClasse(Classe classe) {
-		if(classe.name().equalsIgnoreCase("Guerreiro")){
-			this.setAtk(12);// +3 espada
-			this.setDef(10);// +1 defesa
-		}else if(classe.name().equalsIgnoreCase("Ceifeiro")){
-			this.setAtk(11);// +2 espada
-			this.setDef(11);// +2 defesa
-		}else {
-			this.setAtk(11);// +1 espada
-			this.setDef(12);// +3 defesa
-		}
-		this.setHp(20);
-		this.setMaxHp(25);
-		this.classe = classe;
-	}
+	
 
 }
