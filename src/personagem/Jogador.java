@@ -2,11 +2,9 @@ package personagem;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.util.Scanner;
 
 import sistema.Vilarejo;
-
-
 
 
 public class Jogador extends Personagem implements Serializable {
@@ -20,9 +18,8 @@ public class Jogador extends Personagem implements Serializable {
 	public String classeUltimaLocalizacao;
 	public String metodoUltimaLocalizacao;
 	private int level;
+	static Scanner scanner = new Scanner(System.in);
 	
-	
-
 	public int getLevel() {
 		return level;
 	}
@@ -49,7 +46,17 @@ public class Jogador extends Personagem implements Serializable {
 
 	
 	public Jogador() {
-
+		System.out.print("Digite um nome para seu personagem: ");
+		this.setNome(scanner.next());
+		this.setSexo();	
+		this.setClasse(defineClasse());
+		this.setInteracoes(new Interacoes());
+		this.setAtk(10);
+		this.setLevel(1);
+		this.setDef(13);
+		this.setHp(18);
+		this.setMaxHp(22);
+		
 	}
 	
 	public Jogador(String nome, int atk, int def, int hp, int gold){
@@ -65,6 +72,43 @@ public class Jogador extends Personagem implements Serializable {
 //		this.getInventario().setGold(gold);
 	}
 	
+	public void setSexo() {
+		int op;
+		do {
+			System.out.println("Digite uma das opcoes abaixo para escolher um sexo:");
+			System.out.println("(1) - MASCULINO   |  (2) - FEMININO");
+			op = scanner.nextInt();
+			
+			if(op != 1 && op != 2)
+				System.out.println("Opção Inválida!");
+		}while(op != 1 && op != 2);
+		
+		if(op == 1) {
+			sexo =  Sexo.MASCULINO;
+		}else {
+			sexo = Sexo.FEMININO;
+		}		
+	}
+	
+	public Classe defineClasse() {
+		int op;
+		do {
+			System.out.println("Digite uma das opcoes abaixo para escolher sua classe:");
+			System.out.println("(1) - GUERREIRO   |  (2) - CEIFEIRO   |  (3) - ARQUEIRO");
+			op = scanner.nextInt();
+			
+			if(op != 1 && op != 2 && op != 3)
+				System.out.println("Opção Inválida!");
+		}while(op != 1 && op != 2 && op != 3);
+		
+		if(op != 1) {
+			return Classe.GUERREIRO;
+		}else if(op != 2) {
+			return Classe.CEIFEIRO;
+		}else {
+			return Classe.ARQUEIRO;
+		}
+	}
 
 	public String getClassLocal() {
 		return classeUltimaLocalizacao;
@@ -95,21 +139,11 @@ public class Jogador extends Personagem implements Serializable {
 		this.interacoes = interacoes;
 	}
 
-	public int getAlinhamento() {
-		return alinhamento;
-	}
-
-	public void setAlinhamento(int alinhamento) {
-		this.alinhamento = alinhamento;
-	}
 	
 	public Sexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(Sexo sexo) {
-		this.sexo = sexo;
-	}
 	
 	public Classe getClasse() {
 		return classe;

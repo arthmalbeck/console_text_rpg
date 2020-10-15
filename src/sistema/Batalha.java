@@ -20,23 +20,29 @@ public abstract class Batalha {
 //		personagem.setDefendido(false);
 //	}
 
-	public static boolean iniciaBatalha(Jogador j, int numInimigo) {
+	public static boolean iniciaBatalha(Jogador j, int num) {
 		jogador = j;
-		jogador.setDefendido(false);
+		numInimigo = num;
+		geraOponente();
 		batalha();
 		if(gameOver()) {
 			return false;
 		}
+		switch (num) {
+		case 1:
+			System.out.println("Urubu espantado com sucesso!");
+			break;
+		default:
+			break;
+		}
+		System.out.println();
 		return true;
 	}
 
 	public static void geraOponente() {
-		// Dialogo ao fim da bataha sejogador vencer ou morrer
-		// Voce espantou a raposa, pena q já havia comido os ovos
-
 		switch (numInimigo) {
 		case 1:
-			inimigo.setAtributos("Raposa", 12, 4, 10);
+			inimigo = new Inimigo("Abutre", 12, 4, 10);
 			break;
 		case 2:
 			break;
@@ -72,12 +78,11 @@ public abstract class Batalha {
 		} else {
 			System.out.println("O inimigo começa a batalha!");
 		}
-
 		while (jogador.getHp() > 0 && inimigo.getHp() > 0) {
+			barraVida(jogador);
+			barraVida(inimigo);
 			if (turnoJogador) {
 				if (!penalidadeJogador) {
-					barraVida(jogador);
-					barraVida(inimigo);
 					System.out.println("Digite uma das opções da batalha ");
 					System.out.println("(1) Atacar |  (2) Curar ");
 					opc = MontanhaSagrada.entrada();
@@ -99,12 +104,15 @@ public abstract class Batalha {
 					turnoJogador = false;
 				}
 			} else {
-				if (!penalidadeInimigo)
+				if (!penalidadeInimigo) {
 					ataque(inimigo, jogador);
-				else
+				}
+				else {
 					penalidadeInimigo = false;
+				}
+				turnoJogador = true;
 			}
-			turnoJogador = true;
+			
 		}
 		System.out.println("Fim da batalha!");
 		barraVida(jogador);
@@ -120,79 +128,30 @@ public abstract class Batalha {
 
 	private static void ataque(Personagem x, Personagem y) { // X ataca, Y defende
 		int dano, acertarAtaque;
-		System.out.println(x.getNome() + " esta atacando!");
+		System.out.println(x.getNome() + " - esta atacando!");
 		System.out.println("Sorteando chance de o ataque acertar!");
 		acertarAtaque = random(1, 20);
-		System.out.println(x.getNome() + " sorteou o numero: " + acertarAtaque);
-		if (acertarAtaque > y.getDef())
-			System.out.println(x.getNome() + " acertou o ataque, causando " + random(1, x.getAtk()) + " de dano");
-		else if (acertarAtaque < y.getDef())
-			System.out.println(x.getNome() + " errou o ataque!");
-		else if (acertarAtaque == 1) {
-			System.out.println(x.getNome() + " errou o ataque desastrosamente e acabou-se exaustando!");
-			System.out.println(x.getNome() + " ficara um turno sem jogar");
-			if (x.getNome().equalsIgnoreCase(jogador.getNome()))
-				penalidadeJogador = true;
-			else
-				penalidadeInimigo = true;
-		} else if (acertarAtaque == 20) {
-			System.out.println(x.getNome() + " acertou o ataque em cheio!");
-			System.out.println(x.getNome() + " causou " + random(1, x.getAtk()) * 2 + " de dano critico!");
+		System.out.println(x.getNome() + " - sorteou o numero: " + acertarAtaque);
+		if (acertarAtaque > y.getDef()) {
+			if (acertarAtaque == 20) {
+				System.out.println(x.getNome() + " - acertou o ataque em cheio!");
+				System.out.println(x.getNome() + " - causou " + y.sofrerDano(random(1, x.getAtk()) * 2) + " de dano critico!");
+			}else
+			System.out.println(x.getNome() + " - acertou o ataque, causando " + y.sofrerDano(random(1, x.getAtk())) + " de dano");
+		}else if (acertarAtaque < y.getDef()) {
+			if (acertarAtaque == 1) {
+				System.out.println(x.getNome() + " - errou o ataque desastrosamente e acabou-se exaustando!");
+				System.out.println(x.getNome() + " - ficara um turno sem jogar");
+				if (x.getNome().equalsIgnoreCase(jogador.getNome()))
+					penalidadeJogador = true;
+				else
+					penalidadeInimigo = true;
+			} else
+			System.out.println(x.getNome() + " - errou o ataque!");
 		}
 
 	}
-//	public boolean curar() {
-//		int opcInt = 0;
-//		int escolha = 0;
-//		int cont = 0;
-//		int curado = 0;
-//		boolean vidaCheia= false;// = verifica_hp_hs(jogador->status.hp, jogador->status.maxHp);
-//		boolean repeat; // se n tiver itens aparecer q n tem itens e voltar pra op?oes de batalha
-//		if (vidaCheia) {
-//			// Sua barra de HP já está cheia.");
-//			return false;
-//		}
-//		int i = 0;
-//
-//		if (jogador.getInventario().getNumElementos() == 0) {
-//			// Você não possui itens de cura!
-//			return false;
-//		}
-//
-//		for (i = 0; i < jogador.getInventario().getNumElementos(); i++) {
-//			if (jogador.getInventario().getItens().get(i).getEfeito() == Efeito.CURA_BAIXA
-//					|| jogador.getInventario().getItens().get(i).getEfeito() == Efeito.CURA_MEDIA
-//					|| jogador.getInventario().getItens().get(i).getEfeito() == Efeito.CURA_ALTA) {
-//				// Exibe as pocoes ITEM: - QNT: - DESC
-//				jogador.getInventario().getItens().get(i).getNome();
-//				jogador.getInventario().getItens().get(i).getQtd();
-//				jogador.getInventario().getItens().get(i).getDesc();
-//
-//			}
-//		}
-//
-//		if (escolha == jogador.getInventario().getItens().get(i).getId()) {
-//			int hpInicial = jogador.getHp();
-//			int cura = 0; // = item_cura_hs(jogador.getInventario().getItens().get(escolha).getEfeito(),
-//							// jogador.getHp(), jogador.getMaxHp()); // calcula o quanto deve curar atraves
-//							// do atributo EFEITO
-//			jogador.getInventario().removeQuantidadeItem(escolha, 1);
-//			// curado = item_cura_hs(jogador.getHp(),jogador.getMaxHp(), cura); //
-//			// notifica a cura ao jogador.
-//			curado = cura + jogador.getHp();
-//			if (curado >= jogador.getMaxHp()) {
-//				// Voce restaurou todo o seu HP!
-//				jogador.setHp(jogador.getMaxHp());
-//			} else {
-//				// Voce restaurou de HP!" +curado - hpInicial
-//				// jogador.getHp(curado); // efetua a cura.
-//			}
-//		}
-//		return true;
-//
-//		// Retornando para as opções de batalha..!
-//
-//	}
+
 
 	// Se o randomizador for usado na historia do jogo para randomizar dialogos vai
 	// ter q tirar ele daqui
@@ -203,16 +162,16 @@ public abstract class Batalha {
 	private static void barraVida(Personagem personagem) {
 		int cont; // Vai ser interface gráfica, mas as verificações continua
 		System.out.println(personagem.getNome());
-		if (personagem.isDefendido())
-			System.out.println("[Defendendo]");
 
-		System.out.println(personagem.getHp());
+		System.out.print(personagem.getHp());
+		System.out.print("[");
 		for (cont = 0; cont < personagem.getHp(); cont++)
-			System.out.println("=");
+			System.out.print("=");
 
 		while (cont++ < personagem.getMaxHp())
-			System.out.println(" ");
-		System.out.println("]\n");
+			System.out.print(" ");
+		System.out.print("]\n");
+		System.out.println();
 	}
 
 }

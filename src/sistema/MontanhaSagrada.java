@@ -32,9 +32,7 @@ public class MontanhaSagrada {
 			switch (opcao) {
 			case 1:
 //				MontanhaSagrada.limpaConsole();
-				
-				CriaJogador c = new CriaJogador();
-				MontanhaSagrada.jogador = c.criar(); 
+				MontanhaSagrada.jogador = new Jogador(); 
 				
 				Vilarejo.inicio();
 				repeat = false;
@@ -83,7 +81,7 @@ public class MontanhaSagrada {
 		System.out.print(" | (1) Novo Jogo | (2) Continuar | (3) Menu de Comandos | (4) Creditos   |\n");
 		System.out.print(" |                                                                       |\n");
 		System.out.print(" +-----------------------------------------------------------------------+\n");
-		System.out.print(" |       Engenharia de Software - UNIPAMPA - Grupo 2 RPIII 2019-01       |\n");
+		System.out.print(" |                   Engenharia de Software - UNIPAMPA                   |\n");
 		System.out.print(" +-----------------------------------------------------------------------+\n\n");
 	}
 

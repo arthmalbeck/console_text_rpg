@@ -27,6 +27,15 @@ public class Personagem implements Serializable{
 	public void setAtk(int atk) {
 		this.atk = atk;
 	}
+	public int sofrerDano(int dano) {
+		if(hp - dano < 0) {
+			hp = 0;
+		}else {
+			hp = hp - dano;
+		}
+		return dano;
+		
+	}
 	
 	public int getDef() {
 		return def;
