@@ -7,6 +7,7 @@ import fileManipulator.Leitura;
 import item.Arma;
 import item.Armadura;
 import item.Bugiganga;
+import item.Consumivel;
 
 public class Vilarejo {
 	static Scanner entrada = new Scanner(System.in);
@@ -72,6 +73,7 @@ public class Vilarejo {
 			case 1:
 				if (!MontanhaSagrada.jogador.getInteracoes().isPegarOvosCeleiro()) {
 					System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "celeiro1.txt"));
+					MontanhaSagrada.jogador.adicionarItem(Consumivel.pegarOvoGrande());
 					MontanhaSagrada.jogador.getInteracoes().setPegarOvosCeleiro(true);
 					repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 2);
 				} else {
@@ -133,6 +135,7 @@ public class Vilarejo {
 			case 3:
 				if(!MontanhaSagrada.jogador.getInteracoes().isDerrotouAnciao()) {
 					System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "oeste.txt"));
+					MontanhaSagrada.jogador.adicionarItem(Consumivel.pegarPocaoMagica());
 					repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 3);
 			}else {
 				System.out.println("Melhor nao ir naquele anciao loco denovo, dessa vez acho que ele ira drenar minha vida");

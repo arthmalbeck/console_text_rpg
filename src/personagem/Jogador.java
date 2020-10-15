@@ -81,7 +81,7 @@ public class Jogador extends Personagem implements Serializable {
 				switch (inventario[op[0]][op[1]].getClass().getName()) {
 				case "item.Arma":
 					Arma arma = (Arma) inventario[op[0]][op[1]];
-					System.out.println("Voce Equipou o item" + arma.getNome());
+					System.out.println("Voce Equipou o item " + arma.getNome());
 					this.arma = inventario[op[0]][op[1]];
 					inventario[op[0]][op[1]] = new Item();
 					this.setAtk(getAtk() +  arma.getAtk());
@@ -89,7 +89,7 @@ public class Jogador extends Personagem implements Serializable {
 					break;
 				case "item.Armadura":
 					Armadura armadura =  (Armadura) inventario[op[0]][op[1]];
-					System.out.println("Voce Equipou o item" + armadura.getNome());
+					System.out.println("Voce Equipou o item " + armadura.getNome());
 					this.armadura = armadura;
 					inventario[op[0]][op[1]] = new Item();
 					this.setDef(getDef() +  armadura.getDef());
@@ -97,7 +97,7 @@ public class Jogador extends Personagem implements Serializable {
 					break;
 				case "item.Consumivel":
 					Consumivel c = (Consumivel) inventario[op[0]][op[1]];
-					System.out.println("Voce Utiizou o item" + c.getNome());
+					System.out.println("Voce Utiizou o item " + c.getNome());
 					this.setHp(this.getHp() + c.getQntAumento());
 					inventario[op[0]][op[1]] = new Item();
 					repeat = false;
@@ -165,7 +165,7 @@ public class Jogador extends Personagem implements Serializable {
 				switch (inventario[op[0]][op[1]].getClass().getName()) {
 				case "item.Consumivel":
 					Consumivel c = (Consumivel) inventario[op[0]][op[1]];
-					System.out.println("Voce Utiizou o item" + c.getNome());
+					System.out.println("Voce Utiizou o item " + c.getNome());
 					this.setHp(this.getHp() + c.getQntAumento());
 					inventario[op[0]][op[1]] = new Item();
 					repeat = false;

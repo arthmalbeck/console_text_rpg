@@ -47,7 +47,7 @@ public abstract class Batalha {
 		case 3:
 			System.out.println("Anciao derrotado com sucesso!");
 			System.out.println(
-					"Anciao - como prometido jovem, vou curar seus ferimentos e lhe dar um porcao magica para sua jornada, venha me visitar mais vezes");
+					"Anciao - como prometido jovem, vou curar seus ferimentos e lhe dar um porcao magica(Regenera 10Hp) para sua jornada, venha me visitar mais vezes");
 			System.out.println("~Voltando para o centro da vila~");
 			MontanhaSagrada.jogador.setHp(MontanhaSagrada.jogador.getMaxHp());
 			MontanhaSagrada.jogador.adicionarItem(Consumivel.pegarPocaoMagica());

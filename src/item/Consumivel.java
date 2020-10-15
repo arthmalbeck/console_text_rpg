@@ -6,6 +6,7 @@ public class Consumivel extends Item{
 	public static Item pegarOvoGrande() {
 		Consumivel ovoGrande = new Consumivel();
 		ovoGrande.setNome("Ovo Grande");
+		ovoGrande.setQntAumento(5);
 
 		return ovoGrande;
 	}
@@ -13,18 +14,11 @@ public class Consumivel extends Item{
 	public static Item pegarPocaoMagica() {
 		Consumivel pocaoMagica = new Consumivel();
 		pocaoMagica.setNome("Poção Mágica");
-		pocaoMagica.setQntAumento(5);
+		pocaoMagica.setQntAumento(10);
 
 		return pocaoMagica;
 	}
 
-	public static Item pegarCarnePassaro() {
-		Consumivel carnePassaro = new Consumivel();
-		carnePassaro.setNome("Carne Passaro");
-		carnePassaro.setQntAumento(4);
-
-		return carnePassaro;
-	}
 
 	public int getQntAumento() {
 		return qntAumento;
