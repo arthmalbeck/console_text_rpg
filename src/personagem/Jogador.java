@@ -56,8 +56,8 @@ public class Jogador extends Personagem implements Serializable {
 			this.setAtk(11);// +1 espada
 			this.setDef(12);// +3 defesa
 		}
-		this.setHp(20);
-		this.setMaxHp(25);
+		this.setHp(25);
+		this.setMaxHp(35);
 		this.classe = classe;
 	}
 
