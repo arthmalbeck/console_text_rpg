@@ -4,15 +4,16 @@ import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
+import item.Item;
 import sistema.Vilarejo;
 
 
 public class Jogador extends Personagem implements Serializable {
 
-//	private Inventario inventario;
+	private Item[][] inventario;
 	private Interacoes interacoes;
-//	private Item armadura;
-//	private Item arma;
+	private Item armadura;
+	private Item arma;
 	private Sexo sexo;
 	private Classe classe;
 	public String classeUltimaLocalizacao;
@@ -43,7 +44,6 @@ public class Jogador extends Personagem implements Serializable {
 //		}
 		
 	}
-
 	
 	public Jogador() {
 		System.out.print("Digite um nome para seu personagem: ");
@@ -67,9 +67,8 @@ public class Jogador extends Personagem implements Serializable {
 		this.setMaxHp(hp);
 //		inventario = new Inventario();
 		interacoes = new Interacoes();
-//		this.setArma(null);
-//		this.setArmadura(null);
-//		this.getInventario().setGold(gold);
+		this.setArma(null);
+		this.setArmadura(null);
 	}
 	
 	public void setSexo() {
@@ -80,7 +79,7 @@ public class Jogador extends Personagem implements Serializable {
 			op = scanner.nextInt();
 			
 			if(op != 1 && op != 2)
-				System.out.println("Opção Inválida!");
+				System.out.println("Opï¿½ï¿½o Invï¿½lida!");
 		}while(op != 1 && op != 2);
 		
 		if(op == 1) {
@@ -98,7 +97,7 @@ public class Jogador extends Personagem implements Serializable {
 			op = scanner.nextInt();
 			
 			if(op != 1 && op != 2 && op != 3)
-				System.out.println("Opção Inválida!");
+				System.out.println("Opï¿½ï¿½o Invï¿½lida!");
 		}while(op != 1 && op != 2 && op != 3);
 		
 		if(op != 1) {
@@ -108,6 +107,11 @@ public class Jogador extends Personagem implements Serializable {
 		}else {
 			return Classe.ARQUEIRO;
 		}
+	}
+
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	public String getClassLocal() {
@@ -128,8 +132,6 @@ public class Jogador extends Personagem implements Serializable {
 	public void setMethod(String metodoUltimaLocalizacao) {
 		this.metodoUltimaLocalizacao = metodoUltimaLocalizacao;
 	}
-	
-
 
 	public Interacoes getInteracoes() {
 		return interacoes;
@@ -137,6 +139,10 @@ public class Jogador extends Personagem implements Serializable {
 
 	public void setInteracoes(Interacoes interacoes) {
 		this.interacoes = interacoes;
+	}
+	
+	public Item[][] getInventario() {
+		return inventario;
 	}
 
 	

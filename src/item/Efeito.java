@@ -1,0 +1,5 @@
+package item;
+
+public enum Efeito {
+	CURA_BAIXA, CURA_MEDIA, CURA_ALTA, AUMENTA_HP, AUMENTA_ATAQUE, AUMENTA_DEFESA,
+}
