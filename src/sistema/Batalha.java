@@ -164,7 +164,7 @@ public abstract class Batalha {
 			barraVida(inimigo);
 			if (turnoJogador) {
 				if (!penalidadeJogador) {
-					System.out.println("Digite uma das opções da batalha ");
+					System.out.println("Digite uma das opcoes da batalha ");
 					System.out.println("(1) Atacar |  (2) Curar ");
 					opc = LeitorEntradas.entrada();
 					switch (opc) {

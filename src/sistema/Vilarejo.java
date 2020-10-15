@@ -21,7 +21,7 @@ public class Vilarejo {
 	}
 
 	public static void casa() throws IOException, InterruptedException {
-		System.out.println("~Voce esta em casa~");
+		System.out.println("\n ~Voce esta em casa~");
 
 		boolean repeat = true;
 		do {
