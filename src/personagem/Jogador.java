@@ -15,7 +15,7 @@ public class Jogador extends Personagem implements Serializable {
 	private Item[][] inventario;
 	private Interacoes interacoes;
 	private Item armadura;
-	private Item arma;
+	public Item arma;
 	private Sexo sexo;
 	private Classe classe;
 	static Scanner scanner = new Scanner(System.in);

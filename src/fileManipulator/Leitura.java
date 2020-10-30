@@ -13,6 +13,7 @@ public class Leitura {
 	
 
 	public static String lerDialogos(Jogador jogador, String txt) throws IOException {
+		concat = "";
 		arquivo = new File("src/historia/" + txt);
 		
 		BufferedReader reader = new BufferedReader(new FileReader(arquivo));

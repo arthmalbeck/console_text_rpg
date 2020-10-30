@@ -23,7 +23,7 @@ public class MontanhaSagrada {
 				MontanhaSagrada.jogador = new Jogador();
 				Vilarejo.inicio();
 				repeat = false;
-				break;
+			break;
 			case 2:
 				MontanhaSagrada.menuComandos();
 				main(args);
