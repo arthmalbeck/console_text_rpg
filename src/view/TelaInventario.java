@@ -28,7 +28,7 @@ public class TelaInventario extends JFrame{
 	private JPanel contentPane;
 	private JButton btnVoltar;
 	private JLabel lblIcone;
-//	InventarioButtons buttons[]=new InventarioButtons[20];
+	InventarioButtons buttons[]=new InventarioButtons[20];
 
 	public TelaInventario(){
 		//Mudando o icone da aplicacao
@@ -82,8 +82,8 @@ public class TelaInventario extends JFrame{
 		jpListaBtns.setLayout(new GridLayout(4, 5, 5, 5));
 		//Add botoes
 		for(int i=0;i<20;i++){
-//			buttons[i]=new InventarioButtons();
-//			jpListaBtns.add(buttons[i]);
+			buttons[i]=new InventarioButtons();
+			jpListaBtns.add(buttons[i]);
 		}
 		
 		scroll.setViewportView(jpListaBtns);
