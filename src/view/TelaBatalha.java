@@ -178,29 +178,29 @@ public class TelaBatalha extends JFrame{
 		lblImgJogadorDefendendo.setSize(50,50);
 		lblImgJogadorDefendendo.setLocation(320, 360);
 						
-		if (jogador.isDefendido()) {
-			ImageIcon imgDefendendo = new ImageIcon("assets\\naodefendendo.png");
-			imgDefendendo.setImage(imgDefendendo.getImage().getScaledInstance(lblImgDefesaJogador.getWidth(), lblImgDefesaJogador.getHeight(), 1));
-			lblImgJogadorDefendendo.setIcon(imgDefendendo);
-			painelJogador.add(lblImgJogadorDefendendo);
-						
-			lblJogadorDefendendo = new JLabel("Defendendo!");
-			lblJogadorDefendendo.setFont(new Font("Tahoma", Font.PLAIN, 22));
-			lblJogadorDefendendo.setSize(200,20);
-			lblJogadorDefendendo.setLocation(385, 375);
-			painelJogador.add(lblJogadorDefendendo);
-		} else {
-			ImageIcon imgDefendendo = new ImageIcon("assets\\defendendo.png");
-			imgDefendendo.setImage(imgDefendendo.getImage().getScaledInstance(lblImgDefesaJogador.getWidth(), lblImgDefesaJogador.getHeight(), 1));
-			lblImgJogadorDefendendo.setIcon(imgDefendendo);
-			painelJogador.add(lblImgJogadorDefendendo);
-						
-			lblJogadorDefendendo = new JLabel("Não Defendendo!");
-			lblJogadorDefendendo.setFont(new Font("Tahoma", Font.PLAIN, 22));
-			lblJogadorDefendendo.setSize(200,20);
-			lblJogadorDefendendo.setLocation(385, 375);
-			painelJogador.add(lblJogadorDefendendo);
-		}
+//		if (jogador.isDefendido()) {
+//			ImageIcon imgDefendendo = new ImageIcon("assets\\naodefendendo.png");
+//			imgDefendendo.setImage(imgDefendendo.getImage().getScaledInstance(lblImgDefesaJogador.getWidth(), lblImgDefesaJogador.getHeight(), 1));
+//			lblImgJogadorDefendendo.setIcon(imgDefendendo);
+//			painelJogador.add(lblImgJogadorDefendendo);
+//						
+//			lblJogadorDefendendo = new JLabel("Defendendo!");
+//			lblJogadorDefendendo.setFont(new Font("Tahoma", Font.PLAIN, 22));
+//			lblJogadorDefendendo.setSize(200,20);
+//			lblJogadorDefendendo.setLocation(385, 375);
+//			painelJogador.add(lblJogadorDefendendo);
+//		} else {
+//			ImageIcon imgDefendendo = new ImageIcon("assets\\defendendo.png");
+//			imgDefendendo.setImage(imgDefendendo.getImage().getScaledInstance(lblImgDefesaJogador.getWidth(), lblImgDefesaJogador.getHeight(), 1));
+//			lblImgJogadorDefendendo.setIcon(imgDefendendo);
+//			painelJogador.add(lblImgJogadorDefendendo);
+//						
+//			lblJogadorDefendendo = new JLabel("Não Defendendo!");
+//			lblJogadorDefendendo.setFont(new Font("Tahoma", Font.PLAIN, 22));
+//			lblJogadorDefendendo.setSize(200,20);
+//			lblJogadorDefendendo.setLocation(385, 375);
+//			painelJogador.add(lblJogadorDefendendo);
+//		}
 		//Fim Defendendo Jogador
 		
 		
@@ -286,30 +286,30 @@ public class TelaBatalha extends JFrame{
 	  	lblImgInimigoDefendendo.setSize(50,50);
 	  	lblImgInimigoDefendendo.setLocation(320, 360);
 	  						 	
-	  	if (inimigo.isDefendido()) {
-	  		ImageIcon imgInimigoDefendendo = new ImageIcon("assets\\naodefendendo.png");
-	  		imgInimigoDefendendo.setImage(imgInimigoDefendendo.getImage().getScaledInstance(lblImgDefesaInimigo.getWidth(), lblImgDefesaInimigo.getHeight(), 1));
-		  	lblImgInimigoDefendendo.setIcon(imgInimigoDefendendo);
-		  	painelInimigo.add(lblImgInimigoDefendendo);
-		  					
-		  	lblInimigoDefendendo = new JLabel("Não Defendendo!");
-		  	lblInimigoDefendendo.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		  	lblInimigoDefendendo.setSize(200,20);
-		  	lblInimigoDefendendo.setLocation(385, 375);
-		  	painelInimigo.add(lblInimigoDefendendo);
-		} else {
-			ImageIcon imgNaoDefendendo = new ImageIcon("assets\\naodefendendo.png");
-		  	imgNaoDefendendo.setImage(imgNaoDefendendo.getImage().getScaledInstance(lblImgDefesaInimigo.getWidth(), lblImgDefesaInimigo.getHeight(), 1));
-		  	lblImgInimigoDefendendo.setIcon(imgNaoDefendendo);
-		  	painelInimigo.add(lblImgInimigoDefendendo);
-		  					
-		  	lblInimigoDefendendo = new JLabel("Não Defendendo!");
-		  	lblInimigoDefendendo.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		  	lblInimigoDefendendo.setSize(200,20);
-		  	lblInimigoDefendendo.setLocation(385, 375);
-		  	painelInimigo.add(lblInimigoDefendendo);
-		  	
-		}
+//	  	if (inimigo.isDefendido()) {
+//	  		ImageIcon imgInimigoDefendendo = new ImageIcon("assets\\naodefendendo.png");
+//	  		imgInimigoDefendendo.setImage(imgInimigoDefendendo.getImage().getScaledInstance(lblImgDefesaInimigo.getWidth(), lblImgDefesaInimigo.getHeight(), 1));
+//		  	lblImgInimigoDefendendo.setIcon(imgInimigoDefendendo);
+//		  	painelInimigo.add(lblImgInimigoDefendendo);
+//		  					
+//		  	lblInimigoDefendendo = new JLabel("Não Defendendo!");
+//		  	lblInimigoDefendendo.setFont(new Font("Tahoma", Font.PLAIN, 22));
+//		  	lblInimigoDefendendo.setSize(200,20);
+//		  	lblInimigoDefendendo.setLocation(385, 375);
+//		  	painelInimigo.add(lblInimigoDefendendo);
+//		} else {
+//			ImageIcon imgNaoDefendendo = new ImageIcon("assets\\naodefendendo.png");
+//		  	imgNaoDefendendo.setImage(imgNaoDefendendo.getImage().getScaledInstance(lblImgDefesaInimigo.getWidth(), lblImgDefesaInimigo.getHeight(), 1));
+//		  	lblImgInimigoDefendendo.setIcon(imgNaoDefendendo);
+//		  	painelInimigo.add(lblImgInimigoDefendendo);
+//		  					
+//		  	lblInimigoDefendendo = new JLabel("Não Defendendo!");
+//		  	lblInimigoDefendendo.setFont(new Font("Tahoma", Font.PLAIN, 22));
+//		  	lblInimigoDefendendo.setSize(200,20);
+//		  	lblInimigoDefendendo.setLocation(385, 375);
+//		  	painelInimigo.add(lblInimigoDefendendo);
+//		  	
+//		}
 	  	//Fim Defendendo Inimigo
 	  
 	  	
@@ -331,7 +331,7 @@ public class TelaBatalha extends JFrame{
 		painelAcoes.add(lblAcoes);
 		
 //		ActionListener atk = new BatalhaController(this, jogador); 
-		btnAtacar = new JButton("Defender");
+		btnAtacar = new JButton("Atacar");
 //		btnAtacar.addActionListener(atk);
 		btnAtacar.setSize(100,50);
 		btnAtacar.setLocation(500, 570);
@@ -339,21 +339,21 @@ public class TelaBatalha extends JFrame{
 		
 		
 //		ActionListener def = new BatalhaController(this, jogador); 
-		btnDefender = new JButton("Defender");
-//		btnDefender.addActionListener(def);
-		btnDefender.setSize(100,50);
-		btnDefender.setLocation(627, 570);
-		painelAcoes.add(btnDefender);
+//		btnDefender = new JButton("Defender");
+////		btnDefender.addActionListener(def);
+//		btnDefender.setSize(100,50);
+//		btnDefender.setLocation(627, 570);
+//		painelAcoes.add(btnDefender);
 		
 //		ActionListener curar = new BatalhaController(this, jogador); 
-		btnCurar = new JButton("Curar");
+		btnCurar = new JButton("Inventario");
 //		btnCurar.addActionListener(curar);
 		btnCurar.setSize(100,50);
 		btnCurar.setLocation(750, 570);
 		painelAcoes.add(btnCurar);
 		//Fim Acoes
 		
-		JLabel lblUniversidade = new JLabel("Engenharia de Software - UNIPAMPA - Grupo 2 RPIII 2019-01");
+		JLabel lblUniversidade = new JLabel("Engenharia de Software - UNIPAMPA");
 		
 		JPanel jp = new JPanel();
 		jp.setLayout(new FlowLayout());
@@ -365,6 +365,7 @@ public class TelaBatalha extends JFrame{
 	    
 	public static void main(String[] args) throws ParseException{
 		Jogador j = new Jogador("Jog", 10, 20, 30, 40);
+		j.setSexo(Sexo.MASCULINO);
 		Inimigo i = new Inimigo("Jog", 10, 20, 30);
 		
 		TelaBatalha frame = new TelaBatalha(j, i);
