@@ -7,6 +7,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.Inventario;
@@ -28,8 +31,11 @@ public class TelaInventario extends JFrame {
 	private JPanel painelMenu;
 	private JPanel painelConteudo;
 	private JPanel contentPane;
-	private JButton btnVoltar;
+	private JButton btnEnviar;
 	private JLabel lblIcone;
+	private JLabel lblCodigo;
+	private JTextField txtCodigo;
+	
 	InventarioButtons buttons[] = new InventarioButtons[20];
 
 	public TelaInventario() {
@@ -58,20 +64,41 @@ public class TelaInventario extends JFrame {
 		jpImg.setBackground(null);
 		painelPrincipal.add(jpImg, BorderLayout.NORTH);
 
-		btnVoltar = new JButton("Voltar");
-		btnVoltar.setLocation(250, 0);
-		btnVoltar.setSize(100, 20);
-		btnVoltar.addActionListener(new ActionListener() {
+		
+		lblCodigo = new JLabel("Código");
+		lblCodigo.setSize(100, 50);
+		lblCodigo.setLocation(450, 530);
+
+		txtCodigo = new JTextField(25);
+		txtCodigo.addKeyListener(new KeyAdapter() {
+	         public void keyPressed(KeyEvent ke) {
+	            String value = txtCodigo.getText();
+	            int l = value.length();
+	            if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+	            	txtCodigo.setEditable(true);
+	            } else {
+	            	txtCodigo.setEditable(false);
+	            }
+	         }
+	      });
+		
+		
+		btnEnviar = new JButton("Enviar");
+		btnEnviar.setLocation(250, 0);
+		btnEnviar.setSize(100, 20);
+		btnEnviar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaInventario.this.setVisible(false);
-				TelaInventario.this.dispose();
+//				TelaInventario.this.setVisible(false);
+//				TelaInventario.this.dispose();
 			}
 		});
 
 		painelMenu = new JPanel();
 		painelMenu.setLayout(new FlowLayout());
-		painelMenu.add(btnVoltar);
+		painelMenu.add(lblCodigo);
+		painelMenu.add(txtCodigo);
+		painelMenu.add(btnEnviar);
 		painelMenu.setBackground(null);
 		painelMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 		painelPrincipal.add(painelMenu, BorderLayout.SOUTH);
@@ -79,9 +106,9 @@ public class TelaInventario extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		JScrollPane scroll = new JScrollPane();
-		scroll.setPreferredSize(new Dimension(500, 400));
+		scroll.setPreferredSize(new Dimension(400, 400));
 		JPanel jpListaBtns = new JPanel();
-		jpListaBtns.setLayout(new GridLayout(4, 5, 5, 5));
+		jpListaBtns.setLayout(new GridLayout(3, 5, 5, 5));
 		// Add botoes
 		int cont = 0;
 		for (int i = 0; i < 3; i++) {
@@ -99,6 +126,9 @@ public class TelaInventario extends JFrame {
 		contentPane.add(scroll);
 		painelConteudo.add(contentPane);
 		pack();
+		
+		
+		
 
 	}
 

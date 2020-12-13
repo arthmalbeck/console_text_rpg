@@ -75,19 +75,19 @@ public class TelaInicial extends JFrame{
 			}}
 		);
 		
-		btnContinuar = new JButton("Continuar");
-		btnContinuar.setLocation(250, 0);
-		btnContinuar.setSize(100,20);
-//		btnContinuar.setBackground(Color.decode("#F0FFFF"));
-		btnContinuar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TelaContinuar tcont = new TelaContinuar();
-				tcont.setLocationRelativeTo(null);
-				tcont.setResizable(false);
-				tcont.setVisible(true);
-			}}
-		);
+//		btnContinuar = new JButton("Continuar");
+//		btnContinuar.setLocation(250, 0);
+//		btnContinuar.setSize(100,20);
+////		btnContinuar.setBackground(Color.decode("#F0FFFF"));
+//		btnContinuar.addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				TelaContinuar tcont = new TelaContinuar();
+//				tcont.setLocationRelativeTo(null);
+//				tcont.setResizable(false);
+//				tcont.setVisible(true);
+//			}}
+//		);
 		
 		btnComandos = new JButton("Menu de Comandos");
 		btnComandos.setLocation(250, 0);
@@ -153,7 +153,7 @@ public class TelaInicial extends JFrame{
 		jpListaBtns.add(jpTitListBtns);
 		//Add botoes
 		jpListaBtns.add(btnNovoJogo);	
-		jpListaBtns.add(btnContinuar);	
+//		jpListaBtns.add(btnContinuar);	
 		jpListaBtns.add(btnComandos);	
 		jpListaBtns.add(btnCreditos);	
 		jpListaBtns.add(btnSair);	

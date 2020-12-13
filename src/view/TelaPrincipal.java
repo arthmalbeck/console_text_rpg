@@ -50,6 +50,7 @@ public class TelaPrincipal extends JFrame {
 	private JLabel lblArmaJogador;
 	private JLabel lblImgArmaduraJogador;
 	private JLabel lblArmaduraJogador;
+	private JLabel lblLocal;
 
 	private JLabel lblInventario;
 	private JButton btnInventario;
@@ -93,10 +94,10 @@ public class TelaPrincipal extends JFrame {
 		jogadorLayout.setVerticalGroup(jogadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGap(0, 245, Short.MAX_VALUE));
 
-		lblJogador = new JLabel(jogador.getNome());
+		lblJogador = new JLabel(jogador.getNome() + " (" + jogador.getClasse() + ")");
 		lblJogador.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblJogador.setSize(200, 20);
-		lblJogador.setLocation(160, 30);
+		lblJogador.setSize(500, 20);
+		lblJogador.setLocation(75, 30);
 		painelJogador.add(lblJogador);
 
 		// Inicio Img Jogador
@@ -186,7 +187,7 @@ public class TelaPrincipal extends JFrame {
 
 		lblArmaJogador = new JLabel(jogador.getArma().getNome()); // mostrando nome da arma do jogador
 		lblArmaJogador.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblArmaJogador.setSize(200, 20);
+		lblArmaJogador.setSize(500, 20);
 		lblArmaJogador.setLocation(295, 275);
 		painelJogador.add(lblArmaJogador);
 		// Fim Espada Jogador
@@ -204,7 +205,7 @@ public class TelaPrincipal extends JFrame {
 
 		lblArmaduraJogador = new JLabel(jogador.getArmadura().getNome()); // mostrando armadura do jogador
 		lblArmaduraJogador.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblArmaduraJogador.setSize(200, 20);
+		lblArmaduraJogador.setSize(500, 20);
 		lblArmaduraJogador.setLocation(295, 335);
 		painelJogador.add(lblArmaduraJogador);
 		// Fim Armadura Jogador
@@ -271,6 +272,14 @@ public class TelaPrincipal extends JFrame {
 		// Inicio Painel Histï¿½ria
 		painelHistoria = new javax.swing.JPanel();
 		painelHistoria.setBackground(Color.decode("#BAAC87"));
+		
+		
+		lblLocal = new JLabel("Localização: LOCAL");
+		lblLocal.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblLocal.setSize(200, 20);
+		lblLocal.setLocation(75, 30);
+		painelHistoria.add(lblLocal);
+		
 
 		javax.swing.GroupLayout historiaLayout = new javax.swing.GroupLayout(painelHistoria);
 		painelHistoria.setLayout(historiaLayout);
@@ -339,21 +348,21 @@ public class TelaPrincipal extends JFrame {
 		menuLayout.setVerticalGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0,
 				91, Short.MAX_VALUE));
 
-		btnSalvar = new JButton("Salvar");
-		btnSalvar.setSize(100, 50);
-		btnSalvar.setLocation(75, 22);
-//		btnSalvar.setBackground(Color.decode("#F0FFFF"));
-		btnSalvar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
-		painelMenu.add(btnSalvar);
+//		btnSalvar = new JButton("Salvar");
+//		btnSalvar.setSize(100, 50);
+//		btnSalvar.setLocation(75, 22);
+////		btnSalvar.setBackground(Color.decode("#F0FFFF"));
+//		btnSalvar.addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//
+//			}
+//		});
+//		painelMenu.add(btnSalvar);
 
 		btnSair = new JButton("Sair");
 		btnSair.setSize(100, 50);
-		btnSair.setLocation(175, 22);
+		btnSair.setLocation(75, 22);
 //		btnSair.setBackground(Color.decode("#F0FFFF"));
 		btnSair.addActionListener(new ActionListener() {
 			@Override
