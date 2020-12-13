@@ -1,0 +1,5 @@
+Voce recebeu uma carta da guilda localizada na montanha sagrada, os Orizaba!
+Para abrir o inventario e ter acesso aos itens adquiridos durante a jornada, clique no
+botao "Inventario" localizado no menu lateral esquerdo.
+
+

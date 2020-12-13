@@ -3,48 +3,26 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
-import javax.swing.border.EmptyBorder;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
-//import controller.AnciaoController;
-//import controller.CasaController;
-//import controller.CeleiroController;
-//import controller.CentroVilarejoController;
-//import controller.CriaJogadorController;
-//import controller.FerreiroController;
-//import controller.FlorestaController;
-//import controller.JanelaController;
-//import controller.LesteController;
-//import controller.MercadoController;
-//import controller.NorteController;
-//import controller.OesteController;
-//import controller.PeterController;
-//import controller.QuedaAguaController;
-//import controller.SaiCasaController;
-//import controller.SulController;
-//import controller.ViajanteController;
+import controller.VilarejoController;
 import fileManipulator.Leitura;
 import item.Item;
 import personagem.Jogador;
 import personagem.Sexo;
-
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class TelaPrincipal extends JFrame {
 
@@ -152,7 +130,7 @@ public class TelaPrincipal extends JFrame {
 		lblImgVidaJogador.setIcon(imgHeart);
 		painelJogador.add(lblImgVidaJogador);
 
-		lblVidaJogador = new JLabel(Integer.toString(jogador.getHp())); // mostrando o HP atual do jogador
+		lblVidaJogador = new JLabel(Integer.toString(jogador.getHp()) + "/" + Integer.toString(jogador.getMaxHp())); // mostrando o HP atual do jogador
 		lblVidaJogador.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblVidaJogador.setSize(200, 20);
 		lblVidaJogador.setLocation(295, 95);
@@ -303,21 +281,20 @@ public class TelaPrincipal extends JFrame {
 
 		// Painel de Dialogos //
 		leitor = new Leitura();
-		String dialogo = leitor.juntarFrases(leitor.lerDialogos(jogador, "introduction.txt"));
+		String dialogo = leitor.lerDialogos(jogador, "introduction_frame.txt");
 		this.refreshTextPane().setText(dialogo);
-//		txtPaneHistoria = new JTextPane();
-//		txtPaneHistoria.setSize(800, 400);
-//		txtPaneHistoria.setLocation(75, 80);
-//		txtPaneHistoria.setText(dialogo);
-//		txtPaneHistoria.setEditable(true);
-//		painelHistoria.add(txtPaneHistoria);
+		txtPaneHistoria = new JTextPane();
+		txtPaneHistoria.setSize(800, 400);
+		txtPaneHistoria.setLocation(75, 80);
+		txtPaneHistoria.setText(dialogo);
+		txtPaneHistoria.setEditable(true);
+		painelHistoria.add(txtPaneHistoria);
 
-
-//		MouseListener action = new CasaController(this, jogador, "casa");
+		MouseListener action = new VilarejoController(this, "casa");
 		btnOpcao1 = new JButton("Prosseguir  >");
 		btnOpcao1.setSize(160, 50);
 		btnOpcao1.setLocation(75, 500);
-//		btnOpcao1.addMouseListener(action);
+		btnOpcao1.addMouseListener(action);
 		painelHistoria.add(btnOpcao1);
 
 		btnOpcao2 = new JButton();
@@ -340,7 +317,7 @@ public class TelaPrincipal extends JFrame {
 		btnOpcao4.setVisible(false); // comeï¿½a invisivel
 
 		painelHistoria.add(btnOpcao4);
-		
+
 		btnOpcao5 = new JButton();
 		btnOpcao5.setSize(100, 50);
 		btnOpcao5.setLocation(780, 500);
@@ -428,45 +405,45 @@ public class TelaPrincipal extends JFrame {
 	}
 
 	public void escolhaCasa(Jogador jogador, String dialogo) {
-
-
 		this.refreshTextPane();
 		this.txtPaneHistoria.setText(dialogo);
-//		MouseListener opc1 = new JanelaController(this, jogador, "janela"); // olha pela janela
-//		MouseListener opc2 = new SaiCasaController(this, jogador, "sai_casa"); // sai de casa
-//		this.btnOpcao1.addMouseListener(opc1);
-//		this.btnOpcao2.addMouseListener(opc2);
+		MouseListener opc1 = new VilarejoController(this, "varanda"); // olha pela janela
+		MouseListener opc2 = new VilarejoController(this, "fora_casa"); // sai de casa
+		this.btnOpcao1.addMouseListener(opc1);
+		this.btnOpcao2.addMouseListener(opc2);
 	}
 
 	public void escolhaVilarejo(Jogador jogador, String dialogo) {
 
 		this.refreshTextPane();
 		this.txtPaneHistoria.setText(dialogo);
-//		MouseListener opc1 = new CeleiroController(this, jogador, "celeiro"); // vai para o celeiro
-//		MouseListener opc2 = new CentroVilarejoController(this, jogador, "centro_vilarejo"); // vai para o centro
-//		MouseListener opc3 = new CasaController(this, jogador, "casa"); // volta para casa
-//		this.btnOpcao1.addMouseListener(opc1);
-//		this.btnOpcao2.addMouseListener(opc2);
-//		this.btnOpcao3.addMouseListener(opc3);
+		MouseListener opc1 = new VilarejoController(this, "celeiro"); // vai para o celeiro
+		MouseListener opc2 = new VilarejoController(this, "centro_vilarejo"); // vai para o centro
+		MouseListener opc3 = new VilarejoController(this, "casa"); // volta para casa
+		this.btnOpcao1.addMouseListener(opc1);
+		this.btnOpcao2.addMouseListener(opc2);
+		this.btnOpcao3.addMouseListener(opc3);
 	}
-	
-	public void escolhaCentroVilarejo(Jogador jogador, String dialogo) {
 
+	public void escolhaCentroVilarejo(Jogador jogador, String dialogo) {
 		this.refreshTextPane();
-		this.txtPaneHistoria.setFont(new Font("Tahoma", Font.PLAIN, 22)); // queria aumentar o tamanho da fonte, mas desse jeito
+		this.txtPaneHistoria.setFont(new Font("Tahoma", Font.PLAIN, 22)); 
+																			
 		this.txtPaneHistoria.setText(dialogo);
-//		MouseListener opc1 = new SulController(this, jogador, "sul"); // vai para o centro
-//		MouseListener opc2 = new OesteController(this, jogador, "oeste"); // vai para o centro
-//		MouseListener opc3 = new LesteController(this, jogador, "leste"); // vai para o centro
-//		MouseListener opc4 = new NorteController(this, jogador, "norte"); // volta para casa
-//		MouseListener opc5 = new CasaController(this, jogador, "casa");
-//		this.btnOpcao1.addMouseListener(opc1);
-//		this.btnOpcao2.addMouseListener(opc2);
-//		this.btnOpcao3.addMouseListener(opc3);
-//		this.btnOpcao4.addMouseListener(opc4);
-//		this.btnOpcao5.addMouseListener(opc5);
+		MouseListener opc1 = new VilarejoController(this, "sul"); 
+		MouseListener opc2 = new VilarejoController(this, "oeste"); 
+		MouseListener opc3 = new VilarejoController(this, "leste"); 
+		MouseListener opc4 = new VilarejoController(this, "norte"); 
+		MouseListener opc5 = new VilarejoController(this, "fora_casa");
+		MouseListener opc6 = new VilarejoController(this, "taberna"); // ?
+		this.btnOpcao1.addMouseListener(opc1);
+		this.btnOpcao2.addMouseListener(opc2);
+		this.btnOpcao3.addMouseListener(opc3);
+		this.btnOpcao4.addMouseListener(opc4);
+		this.btnOpcao5.addMouseListener(opc5);
+		//criar sexto botao
 	}
-	
+
 	public void escolhaVilarejoSul(Jogador jogador, String dialogo) {
 
 		this.refreshTextPane();
@@ -477,9 +454,9 @@ public class TelaPrincipal extends JFrame {
 //		this.btnOpcao1.addMouseListener(opc1);
 //		this.btnOpcao2.addMouseListener(opc2);
 //		this.btnOpcao3.addMouseListener(opc3);
-		
+
 	}
-	
+
 	public void escolhaVilarejoOeste(Jogador jogador, String dialogo) {
 
 		this.refreshTextPane();
@@ -488,9 +465,9 @@ public class TelaPrincipal extends JFrame {
 //		MouseListener opc2 = new CentroVilarejoController(this, jogador, "centro_vilarejo"); // vai para o centro
 //		this.btnOpcao1.addMouseListener(opc1);
 //		this.btnOpcao2.addMouseListener(opc2);
-		
+
 	}
-	
+
 	public void escolhaVilarejoLeste(Jogador jogador, String dialogo) {
 
 		this.refreshTextPane();
@@ -502,13 +479,14 @@ public class TelaPrincipal extends JFrame {
 //		this.btnOpcao1.addMouseListener(opc1);
 //		this.btnOpcao2.addMouseListener(opc2);
 //		this.btnOpcao2.addMouseListener(opc3);
-		
+
 	}
-	
+
 	public void escolhaVilarejoNorte(Jogador jogador, String dialogo) {
 
 		this.refreshTextPane();
-		//this.txtPaneHistoria.setFont(new Font("Tahoma", Font.PLAIN, 22)); // queria aumentar o tamanho da fonte, mas desse jeito não deu
+		// this.txtPaneHistoria.setFont(new Font("Tahoma", Font.PLAIN, 22)); // queria
+		// aumentar o tamanho da fonte, mas desse jeito não deu
 		this.txtPaneHistoria.setText(dialogo);
 //		MouseListener opc1 = new AnciaoController(this, jogador, "casa_anciao"); // vai para o centro
 //		MouseListener opc2 = new FlorestaController(this, jogador, "floresta"); // vai para o centro
@@ -517,7 +495,7 @@ public class TelaPrincipal extends JFrame {
 //		this.btnOpcao1.addMouseListener(opc1);
 //		this.btnOpcao2.addMouseListener(opc2);
 //		this.btnOpcao2.addMouseListener(opc3);
-		
+
 	}
 
 	public JTextPane refreshTextPane() {
@@ -569,8 +547,6 @@ public class TelaPrincipal extends JFrame {
 	public void setBtnOpcao4(JButton btnOpcao4) {
 		this.btnOpcao4 = btnOpcao4;
 	}
-	
-	
 
 	public JButton getBtnOpcao5() {
 		return btnOpcao5;

@@ -99,11 +99,7 @@ public class Vilarejo {
 
 	public static void centroVila() throws InterruptedException, IOException {
 		boolean repeat = true;
-		System.out.println("~~~~| Voce esta no Centro do Vilarejo de Oishy|~~~~");
-		if (!MontanhaSagrada.jogador.getInteracoes().isConversouPeter()) {
-			System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "centroVilarejo.txt"));
-			MontanhaSagrada.jogador.getInteracoes().setConversouPeter(true);
-		}
+		
 		while (repeat) {
 			System.out.println(
 					"\n (1) - Ir Sul(Batalha Iminente)   (2) - Ir ao leste   (3) - ir ao Oeste(Batalha Iminente)  "

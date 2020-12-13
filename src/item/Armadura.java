@@ -7,7 +7,7 @@ public class Armadura extends Item{
 	private int def;
 	
 	public Armadura() {
-		this.setNome("Sem Armadura");
+		this.setNome("Vazio");
 		this.setDef(0);
 	}
 

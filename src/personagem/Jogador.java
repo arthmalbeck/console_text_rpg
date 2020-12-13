@@ -34,6 +34,40 @@ public class Jogador extends Personagem implements Serializable {
 		armadura = new Armadura();
 		arma = new Arma();
 	}
+	
+	public Jogador(String nome, String sexo, String classe) {
+		this.setNome(nome);
+		this.setSexo(sexo.equalsIgnoreCase("masculino") ? Sexo.MASCULINO : Sexo.FEMININO);
+		switch (classe.toLowerCase()) {
+		case "ceifeiro":
+			this.classe = Classe.CEIFEIRO;
+			this.setAtk(11);// +2 espada
+			this.setDef(11);// +2 defesa
+			break;
+		case "guerreiro":
+			this.classe = Classe.GUERREIRO;
+			this.setAtk(12);// +3 espada
+			this.setDef(10);// +1 defesa
+			break;
+		default:
+			this.classe = Classe.ESCUDEIRO;
+			this.setAtk(11);// +1 espada
+			this.setDef(12);// +3 defesa
+			break;
+		}
+		this.setHp(25);
+		this.setMaxHp(35);
+		
+		this.setInteracoes(new Interacoes());
+		inventario = new Item[3][3];
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				inventario[i][j] = new Item();
+			}
+		}
+		armadura = new Armadura();
+		arma = new Arma();
+	}
 
 	public Jogador(String nome, int atk, int def, int hp, int gold) {
 		this.setNome(nome);
@@ -142,8 +176,6 @@ public class Jogador extends Personagem implements Serializable {
 			}
 		}
 	}
-
-	
 	
 	public void consumiveis() {
 		System.out.println("Inventario");

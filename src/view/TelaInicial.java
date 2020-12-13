@@ -79,7 +79,7 @@ public class TelaInicial extends JFrame{
 		btnContinuar.setLocation(250, 0);
 		btnContinuar.setSize(100,20);
 //		btnContinuar.setBackground(Color.decode("#F0FFFF"));
-		btnContinuar.addActionListener(  new ActionListener() {
+		btnContinuar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				TelaContinuar tcont = new TelaContinuar();

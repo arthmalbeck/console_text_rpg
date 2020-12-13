@@ -7,7 +7,7 @@ public class Arma extends Item {
 	private int atk;
 
 	public Arma() {
-		this.setNome("Sem Arma");
+		this.setNome("Vazio");
 		this.setAtk(0);
 	}
 
