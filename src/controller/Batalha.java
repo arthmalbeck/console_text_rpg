@@ -2,9 +2,11 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.Random;
 
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 
 import item.Consumivel;
 import item.Item;
@@ -14,8 +16,10 @@ import personagem.Personagem;
 import sistema.LeitorEntradas;
 import sistema.MontanhaSagrada;
 import view.TelaBatalha;
+import view.TelaGameOver;
 import view.TelaInventario;
 import view.TelaPrincipal;
+import view.TelaVenceu;
 
 public class Batalha implements ActionListener {
 	private TelaBatalha telaBatalha;
@@ -29,12 +33,19 @@ public class Batalha implements ActionListener {
 	private TelaPrincipal telaPrincipal;
 	private int numInimigo;
 	
-	public Batalha() {}
+	public Batalha(TelaPrincipal telaPrincipal) {
+		this.telaPrincipal = telaPrincipal;
+	}
 
 	public Batalha(TelaBatalha telaBatalha, TelaPrincipal telaPrincipal, int numInimigo) {
+		jogador = MontanhaSagrada.jogador;
+		inimigo = Batalha.geraOponente(numInimigo);
+		this.telaPrincipal = telaPrincipal;
 		this.numInimigo = numInimigo;
-		telaPrincipal.setVisible(false);
+		this.telaPrincipal.setVisible(false);
 		this.telaBatalha = telaBatalha;
+		this.telaBatalha.setVisible(true);
+		
 		this.telaInventario = new TelaInventario();
 		int iniciativaJ = random(1, 20);
 		int iniciativaI = random(1, 20);
@@ -57,10 +68,13 @@ public class Batalha implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		JButton source = (JButton) arg0.getSource();
 		if (source.getName() == "btnCurar") {
-			lerCodItemConsumivel(telaInventario);
+			TelaInventario tInventario = new TelaInventario();
+			tInventario.setLocationRelativeTo(null);
+			tInventario.setResizable(false);
+			tInventario.setVisible(true);
+			Inventario i = new Inventario(telaInventario);
 			if (!penalidadeInimigo) {
 				ataque(telaBatalha, inimigo, jogador);
-				confereVida();
 			} else {
 				penalidadeInimigo = false;
 			}
@@ -83,15 +97,21 @@ public class Batalha implements ActionListener {
 				penalidadeJogador = false;
 			}
 		}
+		telaBatalha.repaint();
+		telaBatalha.revalidate();
+		telaBatalha.getLblVidaJogador().setText(Integer.toString(MontanhaSagrada.jogador.getHp()));
+		telaBatalha.getLblVidaInimigo().setText(Integer.toString(MontanhaSagrada.jogador.getHp()));
+//		telaPrincipal.getLblVidaJogador().setText(Integer.toString(MontanhaSagrada.jogador.getHp()));
 		this.telaBatalha.setVisible(false);
-		this.telaBatalha.setVisible(true);
-	}
-
-	private void confereVida() {
-		if (jogador.getHp() <= 0) {
-			this.telaBatalha.setVisible(false);
-			this.telaPrincipal.setVisible(true);
+		if(jogador.getHp() <= 0) {
+			new TelaGameOver();
 		}
+		else if(inimigo.getHp() <= 0) {
+			this.telaPrincipal.setVisible(true);
+			new TelaVenceu();
+		}else
+		this.telaBatalha.setVisible(true);
+		System.out.println(MontanhaSagrada.jogador.getHp());
 	}
 
 	public static void lerCodItemConsumivel(TelaInventario telaInventario) {
@@ -213,16 +233,16 @@ public class Batalha implements ActionListener {
 	}
 
 	public boolean decisaoBatalha(int num) {
-		if (num == 0) {
+		if (num == 1) {
 			int r = random(1, 20);
-			this.telaPrincipal.notifyBatalha("Sorteando valor de 1 a 20, se tirar mais que 10, voce consegue fugir\n"
+			this.telaPrincipal.notifyBatalha("Sorteando valor de 1 a 20, se tirar mais que 10, voce consegue fugir!\n"
 					+ (r > 10 ? "Voce conseguiu dar uma escapada da batalha" : "Voce nao conseguiu fugir da batalha"));
 			if (r > 10) {
 				numInimigo += 10;
 				this.telaPrincipal.notifyBatalha(dialogoBatalha(numInimigo));
-				return true;
-			} else
 				return false;
+			} else
+				return true;
 		}
 		return true;
 	}

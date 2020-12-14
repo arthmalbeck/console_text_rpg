@@ -92,19 +92,19 @@ public abstract class BatalhaConsoleTxt {
 	public static void geraOponente() {
 		switch (numInimigo) {
 		case 1:
-			inimigo = new Inimigo("Abutre", 12, 4, 10);
+//			inimigo = new Inimigo("Abutre", 12, 4, 10);
 			break;
 		case 2:
-			inimigo = new Inimigo("Jennet", 13, 6, 12);
+//			inimigo = new Inimigo("Jennet", 13, 6, 12);
 			break;
 		case 3:
-			inimigo = new Inimigo("Anciao", 14, 9, 13);
+//			inimigo = new Inimigo("Anciao", 14, 9, 13);
 			break;
 		case 4:
-			inimigo = new Inimigo("Billy", 15, 11, 15);
+//			inimigo = new Inimigo("Billy", 15, 11, 15);
 			break;
 		case 5:
-			inimigo = new Inimigo("Capitao Matsusuke", 20, 12, 16);
+//			inimigo = new Inimigo("Capitao Matsusuke", 20, 12, 16);
 			break;
 		}
 	}

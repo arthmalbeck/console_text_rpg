@@ -98,11 +98,11 @@ public class VilarejoController implements MouseListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Batalha b = new Batalha();
+		Batalha b = new Batalha(tela);
 		if (b.decisaoBatalha(this.tela.notifyConfronto(
 				"Enfrentar o velho Ancião??"))) {
 			try {
-				TelaBatalha tb = new TelaBatalha(MontanhaSagrada.jogador, tela, 3);
+				TelaBatalha tb = new TelaBatalha(tela, 3);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -141,11 +141,11 @@ public class VilarejoController implements MouseListener {
 				e.printStackTrace();
 			}
 			MontanhaSagrada.jogador.adicionarItem(Consumivel.pegarPocaoMagica());
-			Batalha b = new Batalha();
+			Batalha b = new Batalha(tela);
 			if (b.decisaoBatalha(this.tela.notifyConfronto(
 					"Enfrentar o velho Ancião??"))) {
 				try {
-					TelaBatalha tb = new TelaBatalha(MontanhaSagrada.jogador, tela, 3);
+					TelaBatalha tb = new TelaBatalha(tela, 3);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -166,10 +166,10 @@ public class VilarejoController implements MouseListener {
 				e.printStackTrace();
 			}
 			MontanhaSagrada.jogador.getInteracoes().setConversouBilly(true);
-			Batalha b = new Batalha();
+			Batalha b = new Batalha(tela);
 			if (b.decisaoBatalha(this.tela.notifyConfronto("Brigar com Billy??"))) {
 				try {
-					TelaBatalha tb = new TelaBatalha(MontanhaSagrada.jogador, tela, 4);
+					TelaBatalha tb = new TelaBatalha(tela, 4);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -183,10 +183,10 @@ public class VilarejoController implements MouseListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Batalha b = new Batalha();
+			Batalha b = new Batalha(tela);
 			if (b.decisaoBatalha(this.tela.notifyConfronto("Brigar com Billy??"))) {
 				try {
-					TelaBatalha tb = new TelaBatalha(MontanhaSagrada.jogador, tela, 4);
+					TelaBatalha tb = new TelaBatalha( tela, 4);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -231,11 +231,11 @@ public class VilarejoController implements MouseListener {
 			}
 			MontanhaSagrada.jogador.adicionarItem(Consumivel.pegarOvoGrande());
 			MontanhaSagrada.jogador.getInteracoes().setPegarOvosCeleiro(true);
-			Batalha b = new Batalha();
+			Batalha b = new Batalha(tela);
 			if (b.decisaoBatalha(this.tela.notifyConfronto(
 					"~A mulher de grande porte e musculos, pega algo da mochila e toma postura de batalha~"))) {
 				try {
-					TelaBatalha tb = new TelaBatalha(MontanhaSagrada.jogador, tela, 2);
+					TelaBatalha tb = new TelaBatalha( tela, 2);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -267,11 +267,12 @@ public class VilarejoController implements MouseListener {
 		}
 		if (!MontanhaSagrada.jogador.getInteracoes().isEspantouAbutre()) {
 			MontanhaSagrada.jogador.getInteracoes().setEspantouAbutre(true);
-			Batalha b = new Batalha();
-			if (b.decisaoBatalha(this.tela.notifyConfronto(
-					"~Tem um abutre na porta de sua casa, comendo um rato podre,\nele esta te olhando de lado, salivando~"))) {
+			Batalha b = new Batalha(tela);
+			int aceite = this.tela.notifyConfronto("~Tem um abutre na porta de sua casa, comendo um rato podre,\nele esta te olhando de lado, salivando~");
+			System.out.println(aceite);
+			if (b.decisaoBatalha(aceite)) {
 				try {
-					TelaBatalha tb = new TelaBatalha(MontanhaSagrada.jogador, tela, 1);
+					TelaBatalha tb = new TelaBatalha(tela, 1);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -20,6 +20,7 @@ import controller.Batalha;
 import personagem.Inimigo;
 import personagem.Jogador;
 import personagem.Sexo;
+import sistema.MontanhaSagrada;
 
 public class TelaBatalha extends JFrame {
 
@@ -63,10 +64,9 @@ public class TelaBatalha extends JFrame {
 	private JLabel lblAcoes;
 	private Batalha controller;
 
-	public TelaBatalha(Jogador jogador,TelaPrincipal telaPrincipal,int numInimigo) throws ParseException {
+	public TelaBatalha(TelaPrincipal telaPrincipal,int numInimigo) throws ParseException {
 		Inimigo inimigo = Batalha.geraOponente(numInimigo);
 		controller = new Batalha(this, telaPrincipal, numInimigo);
-		
 		// Mudando o icone da aplicacao
 		ImageIcon imgLogin = new ImageIcon("assets\\icone2.png");
 		setIconImage(imgLogin.getImage());
@@ -90,7 +90,7 @@ public class TelaBatalha extends JFrame {
 		painelJogador.setBackground(null);
 		painelPrincipal.add(painelJogador);
 
-		lblJogador = new JLabel("JOGADOR");
+		lblJogador = new JLabel(MontanhaSagrada.jogador.getNome() + " (" + MontanhaSagrada.jogador.getClasse() + ")");
 		lblJogador.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblJogador.setSize(200, 20);
 		lblJogador.setLocation(300, 30);
@@ -101,7 +101,7 @@ public class TelaBatalha extends JFrame {
 		lblImgJogador.setSize(200, 300);
 		lblImgJogador.setLocation(40, 100);
 
-		if (jogador.getSexo().equals(Sexo.FEMININO) == true) {
+		if (MontanhaSagrada.jogador.getSexo().equals(Sexo.FEMININO) == true) {
 			ImageIcon imgJogador = new ImageIcon("assets\\jogador.png");
 			imgJogador.setImage(
 					imgJogador.getImage().getScaledInstance(lblImgJogador.getWidth(), lblImgJogador.getHeight(), 1));
@@ -127,7 +127,7 @@ public class TelaBatalha extends JFrame {
 		lblImgVidaJogador.setIcon(imgHeart);
 		painelJogador.add(lblImgVidaJogador);
 
-		lblVidaJogador = new JLabel(Integer.toString(jogador.getHp()));
+		lblVidaJogador = new JLabel(Integer.toString(MontanhaSagrada.jogador.getHp()));
 		lblVidaJogador.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblVidaJogador.setSize(200, 20);
 		lblVidaJogador.setLocation(385, 135);
@@ -145,7 +145,7 @@ public class TelaBatalha extends JFrame {
 		lblImgDefesaJogador.setIcon(imgEscudo);
 		painelJogador.add(lblImgDefesaJogador);
 
-		lblDefesaJogador = new JLabel(Integer.toString(jogador.getDef()));
+		lblDefesaJogador = new JLabel(Integer.toString(MontanhaSagrada.jogador.getDef()));
 		lblDefesaJogador.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblDefesaJogador.setSize(200, 20);
 		lblDefesaJogador.setLocation(385, 215);
@@ -163,7 +163,7 @@ public class TelaBatalha extends JFrame {
 		lblImgAtaqueJogador.setIcon(imgAtaque);
 		painelJogador.add(lblImgAtaqueJogador);
 
-		lblAtaqueJogador = new JLabel(Integer.toString(jogador.getAtk()));
+		lblAtaqueJogador = new JLabel(Integer.toString(MontanhaSagrada.jogador.getAtk()));
 		lblAtaqueJogador.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblAtaqueJogador.setSize(200, 20);
 		lblAtaqueJogador.setLocation(385, 295);
@@ -186,7 +186,7 @@ public class TelaBatalha extends JFrame {
 		painelInimigo.setBackground(null);
 		painelPrincipal.add(painelInimigo);
 
-		lblInimigo = new JLabel("INIMIGO");
+		lblInimigo = new JLabel(inimigo.getNome());
 		lblInimigo.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblInimigo.setSize(300, 20);
 		lblInimigo.setLocation(315, 30);
@@ -281,7 +281,7 @@ public class TelaBatalha extends JFrame {
 //		ActionListener atk = new BatalhaController(this, jogador); 
 		btnAtacar = new JButton("Atacar");
 		btnAtacar.setName("btnAtacar");
-//		btnAtacar.addActionListener(atk);
+		btnAtacar.addActionListener(controller);
 		btnAtacar.setSize(100, 50);
 		btnAtacar.setLocation(500, 570);
 		painelAcoes.add(btnAtacar);
@@ -289,7 +289,7 @@ public class TelaBatalha extends JFrame {
 //		ActionListener curar = new BatalhaController(this, jogador); 
 		btnCurar = new JButton("Inventario");
 		btnCurar.setName("btnCurar");
-//		btnCurar.addActionListener(curar);
+		btnCurar.addActionListener(controller);
 		btnCurar.setSize(100, 50);
 		btnCurar.setLocation(750, 570);
 		painelAcoes.add(btnCurar);
@@ -318,6 +318,250 @@ public class TelaBatalha extends JFrame {
 
 	public void bindInimigo() throws ParseException {
 
+	}
+
+	public JPanel getPainelPrincipal() {
+		return painelPrincipal;
+	}
+
+	public void setPainelPrincipal(JPanel painelPrincipal) {
+		this.painelPrincipal = painelPrincipal;
+	}
+
+	public JPanel getPainelJogador() {
+		return painelJogador;
+	}
+
+	public void setPainelJogador(JPanel painelJogador) {
+		this.painelJogador = painelJogador;
+	}
+
+	public JPanel getPainelInimigo() {
+		return painelInimigo;
+	}
+
+	public void setPainelInimigo(JPanel painelInimigo) {
+		this.painelInimigo = painelInimigo;
+	}
+
+	public JPanel getPainelAcoes() {
+		return painelAcoes;
+	}
+
+	public void setPainelAcoes(JPanel painelAcoes) {
+		this.painelAcoes = painelAcoes;
+	}
+
+	public JButton getBtnAtacar() {
+		return btnAtacar;
+	}
+
+	public void setBtnAtacar(JButton btnAtacar) {
+		this.btnAtacar = btnAtacar;
+	}
+
+	public JButton getBtnDefender() {
+		return btnDefender;
+	}
+
+	public void setBtnDefender(JButton btnDefender) {
+		this.btnDefender = btnDefender;
+	}
+
+	public JButton getBtnCurar() {
+		return btnCurar;
+	}
+
+	public void setBtnCurar(JButton btnCurar) {
+		this.btnCurar = btnCurar;
+	}
+
+	public JLabel getLblIcone() {
+		return lblIcone;
+	}
+
+	public void setLblIcone(JLabel lblIcone) {
+		this.lblIcone = lblIcone;
+	}
+
+	public JLabel getLblImgJogador() {
+		return lblImgJogador;
+	}
+
+	public void setLblImgJogador(JLabel lblImgJogador) {
+		this.lblImgJogador = lblImgJogador;
+	}
+
+	public JLabel getLblImgVidaJogador() {
+		return lblImgVidaJogador;
+	}
+
+	public void setLblImgVidaJogador(JLabel lblImgVidaJogador) {
+		this.lblImgVidaJogador = lblImgVidaJogador;
+	}
+
+	public JLabel getLblVidaJogador() {
+		return lblVidaJogador;
+	}
+
+	public void setLblVidaJogador(JLabel lblVidaJogador) {
+		this.lblVidaJogador = lblVidaJogador;
+	}
+
+	public JLabel getLblImgDefesaJogador() {
+		return lblImgDefesaJogador;
+	}
+
+	public void setLblImgDefesaJogador(JLabel lblImgDefesaJogador) {
+		this.lblImgDefesaJogador = lblImgDefesaJogador;
+	}
+
+	public JLabel getLblDefesaJogador() {
+		return lblDefesaJogador;
+	}
+
+	public void setLblDefesaJogador(JLabel lblDefesaJogador) {
+		this.lblDefesaJogador = lblDefesaJogador;
+	}
+
+	public JLabel getLblImgAtaqueJogador() {
+		return lblImgAtaqueJogador;
+	}
+
+	public void setLblImgAtaqueJogador(JLabel lblImgAtaqueJogador) {
+		this.lblImgAtaqueJogador = lblImgAtaqueJogador;
+	}
+
+	public JLabel getLblAtaqueJogador() {
+		return lblAtaqueJogador;
+	}
+
+	public void setLblAtaqueJogador(JLabel lblAtaqueJogador) {
+		this.lblAtaqueJogador = lblAtaqueJogador;
+	}
+
+	public JLabel getLblImgJogadorDefendendo() {
+		return lblImgJogadorDefendendo;
+	}
+
+	public void setLblImgJogadorDefendendo(JLabel lblImgJogadorDefendendo) {
+		this.lblImgJogadorDefendendo = lblImgJogadorDefendendo;
+	}
+
+	public JLabel getLblJogadorDefendendo() {
+		return lblJogadorDefendendo;
+	}
+
+	public void setLblJogadorDefendendo(JLabel lblJogadorDefendendo) {
+		this.lblJogadorDefendendo = lblJogadorDefendendo;
+	}
+
+	public JLabel getLblImgInimigo() {
+		return lblImgInimigo;
+	}
+
+	public void setLblImgInimigo(JLabel lblImgInimigo) {
+		this.lblImgInimigo = lblImgInimigo;
+	}
+
+	public JLabel getLblImgVidaInimigo() {
+		return lblImgVidaInimigo;
+	}
+
+	public void setLblImgVidaInimigo(JLabel lblImgVidaInimigo) {
+		this.lblImgVidaInimigo = lblImgVidaInimigo;
+	}
+
+	public JLabel getLblVidaInimigo() {
+		return lblVidaInimigo;
+	}
+
+	public void setLblVidaInimigo(JLabel lblVidaInimigo) {
+		this.lblVidaInimigo = lblVidaInimigo;
+	}
+
+	public JLabel getLblImgDefesaInimigo() {
+		return lblImgDefesaInimigo;
+	}
+
+	public void setLblImgDefesaInimigo(JLabel lblImgDefesaInimigo) {
+		this.lblImgDefesaInimigo = lblImgDefesaInimigo;
+	}
+
+	public JLabel getLblDefesaInimigo() {
+		return lblDefesaInimigo;
+	}
+
+	public void setLblDefesaInimigo(JLabel lblDefesaInimigo) {
+		this.lblDefesaInimigo = lblDefesaInimigo;
+	}
+
+	public JLabel getLblImgAtaqueInimigo() {
+		return lblImgAtaqueInimigo;
+	}
+
+	public void setLblImgAtaqueInimigo(JLabel lblImgAtaqueInimigo) {
+		this.lblImgAtaqueInimigo = lblImgAtaqueInimigo;
+	}
+
+	public JLabel getLblAtaqueInimigo() {
+		return lblAtaqueInimigo;
+	}
+
+	public void setLblAtaqueInimigo(JLabel lblAtaqueInimigo) {
+		this.lblAtaqueInimigo = lblAtaqueInimigo;
+	}
+
+	public JLabel getLblImgInimigoDefendendo() {
+		return lblImgInimigoDefendendo;
+	}
+
+	public void setLblImgInimigoDefendendo(JLabel lblImgInimigoDefendendo) {
+		this.lblImgInimigoDefendendo = lblImgInimigoDefendendo;
+	}
+
+	public JLabel getLblInimigoDefendendo() {
+		return lblInimigoDefendendo;
+	}
+
+	public void setLblInimigoDefendendo(JLabel lblInimigoDefendendo) {
+		this.lblInimigoDefendendo = lblInimigoDefendendo;
+	}
+
+	public JLabel getLblJogador() {
+		return lblJogador;
+	}
+
+	public void setLblJogador(JLabel lblJogador) {
+		this.lblJogador = lblJogador;
+	}
+
+	public JLabel getLblInimigo() {
+		return lblInimigo;
+	}
+
+	public void setLblInimigo(JLabel lblInimigo) {
+		this.lblInimigo = lblInimigo;
+	}
+
+	public JLabel getLblAcoes() {
+		return lblAcoes;
+	}
+
+	public void setLblAcoes(JLabel lblAcoes) {
+		this.lblAcoes = lblAcoes;
+	}
+
+	public Batalha getController() {
+		return controller;
+	}
+
+	public void setController(Batalha controller) {
+		this.controller = controller;
+	}
+
+	public static Dimension getTamanho() {
+		return TAMANHO;
 	}
 
 	public void notifyAtaque(String string) {

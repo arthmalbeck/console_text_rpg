@@ -276,11 +276,7 @@ public class TelaPrincipal extends JFrame {
 		painelHistoria.setBackground(Color.decode("#BAAC87"));
 		
 		
-		lblLocal = new JLabel("Localização: LOCAL");
-		lblLocal.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblLocal.setSize(200, 20);
-		lblLocal.setLocation(75, 30);
-		painelHistoria.add(lblLocal);
+	
 		
 
 		javax.swing.GroupLayout historiaLayout = new javax.swing.GroupLayout(painelHistoria);

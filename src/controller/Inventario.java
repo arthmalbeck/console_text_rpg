@@ -13,6 +13,7 @@ import item.Item;
 import sistema.LeitorEntradas;
 import sistema.MontanhaSagrada;
 import view.TelaInventario;
+import view.TelaPrincipal;
 
 public class Inventario implements ActionListener {
 	private TelaInventario tela;
