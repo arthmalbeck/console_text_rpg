@@ -1,4 +1,7 @@
-/item/
-/view/
-/personagem/
 /controller/
+/fileManipulator/
+/historia/
+/item/
+/personagem/
+/sistema/
+/view/

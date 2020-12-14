@@ -3,13 +3,15 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.text.ParseException;
 
 import fileManipulator.Leitura;
 import item.Arma;
 import item.Armadura;
 import item.Consumivel;
-import sistema.Batalha;
+import sistema.BatalhaConsoleTxt;
 import sistema.MontanhaSagrada;
+import view.TelaBatalha;
 import view.TelaPrincipal;
 
 public class VilarejoController implements MouseListener {
@@ -33,26 +35,26 @@ public class VilarejoController implements MouseListener {
 		case "varanda":
 			dialogoVaranda();
 			break;
-		case "fora_casa": //Batalha
+		case "fora_casa": // Batalha
 			dialogoForaDeCasa();
 			break;
-		case "celeiro": //Batalha
+		case "celeiro": // Batalha
 			dialogoCeleiro();
 			break;
 		case "centro_vilarejo":
 			dialogoCentroVila();
 			break;
 		case "sul":
-			dialogoSul(); //Batalha
+			dialogoSul(); // Batalha
 			break;
 		case "oeste":
-			dialogoOeste(); //Batalha
+			dialogoOeste(); // Batalha
 			break;
 		case "leste":
 			dialogoLeste();
 			break;
 		case "norte":
-			dialogoNorte(); //Batalha
+			dialogoNorte(); // Batalha
 			break;
 		case "taberna":
 			dialogoTaberna();
@@ -62,15 +64,18 @@ public class VilarejoController implements MouseListener {
 	}
 
 	private void dialogoTaberna() {
-		if (MontanhaSagrada.jogador.getInteracoes().isDerrotouBilly() && !MontanhaSagrada.jogador.getInteracoes().isPegouChaves() ) {
+		if (MontanhaSagrada.jogador.getInteracoes().isDerrotouBilly()
+				&& !MontanhaSagrada.jogador.getInteracoes().isPegouChaves()) {
 			try {
 				dialogo = Leitura.lerDialogos(MontanhaSagrada.jogador, "taberna1.txt");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			MontanhaSagrada.jogador.getInteracoes().setEncontrouBau(true);;
-		}else if(MontanhaSagrada.jogador.getInteracoes().isDerrotouBilly() && !MontanhaSagrada.jogador.getInteracoes().isPegouItens() && MontanhaSagrada.jogador.getInteracoes().isPegouChaves() ){
+			MontanhaSagrada.jogador.getInteracoes().setEncontrouBau(true);
+		} else if (MontanhaSagrada.jogador.getInteracoes().isDerrotouBilly()
+				&& !MontanhaSagrada.jogador.getInteracoes().isPegouItens()
+				&& MontanhaSagrada.jogador.getInteracoes().isPegouChaves()) {
 			try {
 				dialogo = Leitura.lerDialogos(MontanhaSagrada.jogador, "taberna2.txt");
 			} catch (IOException e) {
@@ -80,7 +85,7 @@ public class VilarejoController implements MouseListener {
 			MontanhaSagrada.jogador.adicionarItem(Arma.pegarEspada(MontanhaSagrada.jogador));
 			MontanhaSagrada.jogador.adicionarItem(Armadura.pegarArmadura(MontanhaSagrada.jogador));
 			MontanhaSagrada.jogador.getInteracoes().setPegouItens(true);
-		}else {
+		} else {
 			dialogo = "Nao acho uma boa ir na taberna agora!";
 		}
 		dialogoCentroVila();
@@ -93,19 +98,29 @@ public class VilarejoController implements MouseListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//			repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 5);
+		Batalha b = new Batalha();
+		if (b.decisaoBatalha(this.tela.notifyConfronto(
+				"Enfrentar o velho Ancião??"))) {
+			try {
+				TelaBatalha tb = new TelaBatalha(MontanhaSagrada.jogador, tela, 3);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		dialogoCentroVila();
 	}
 
 	private void dialogoLeste() {
-		if (!MontanhaSagrada.jogador.getInteracoes().isEncontrouBau() || MontanhaSagrada.jogador.getInteracoes().isPegouChaves()) {
+		if (!MontanhaSagrada.jogador.getInteracoes().isEncontrouBau()
+				|| MontanhaSagrada.jogador.getInteracoes().isPegouChaves()) {
 			try {
 				dialogo = Leitura.lerDialogos(MontanhaSagrada.jogador, "leste1.txt");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else {
+		} else {
 			try {
 				dialogo = Leitura.lerDialogos(MontanhaSagrada.jogador, "leste2.txt");
 			} catch (IOException e) {
@@ -118,7 +133,7 @@ public class VilarejoController implements MouseListener {
 	}
 
 	private void dialogoOeste() {
-		if(!MontanhaSagrada.jogador.getInteracoes().isDerrotouAnciao()) {
+		if (!MontanhaSagrada.jogador.getInteracoes().isDerrotouAnciao()) {
 			try {
 				dialogo = Leitura.lerDialogos(MontanhaSagrada.jogador, "oeste.txt");
 			} catch (IOException e) {
@@ -126,10 +141,19 @@ public class VilarejoController implements MouseListener {
 				e.printStackTrace();
 			}
 			MontanhaSagrada.jogador.adicionarItem(Consumivel.pegarPocaoMagica());
-//				repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 3);
-}else {
-		dialogo = "Melhor nao ir naquele anciao loco denovo, dessa vez acho que ele ira drenar minha vida";
-}
+			Batalha b = new Batalha();
+			if (b.decisaoBatalha(this.tela.notifyConfronto(
+					"Enfrentar o velho Ancião??"))) {
+				try {
+					TelaBatalha tb = new TelaBatalha(MontanhaSagrada.jogador, tela, 3);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} else {
+			dialogo = "Melhor nao ir naquele anciao loco denovo, dessa vez acho que ele ira drenar minha vida";
+		}
 		dialogoCentroVila();
 	}
 
@@ -142,16 +166,33 @@ public class VilarejoController implements MouseListener {
 				e.printStackTrace();
 			}
 			MontanhaSagrada.jogador.getInteracoes().setConversouBilly(true);
-//				repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 4);
-		}else if(MontanhaSagrada.jogador.getInteracoes().isConversouBilly() && !MontanhaSagrada.jogador.getInteracoes().isDerrotouBilly()){
+			Batalha b = new Batalha();
+			if (b.decisaoBatalha(this.tela.notifyConfronto("Brigar com Billy??"))) {
+				try {
+					TelaBatalha tb = new TelaBatalha(MontanhaSagrada.jogador, tela, 4);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} else if (MontanhaSagrada.jogador.getInteracoes().isConversouBilly()
+				&& !MontanhaSagrada.jogador.getInteracoes().isDerrotouBilly()) {
 			try {
 				dialogo = Leitura.lerDialogos(MontanhaSagrada.jogador, "sul2.txt");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-//				repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 4);
-		}else {
+			Batalha b = new Batalha();
+			if (b.decisaoBatalha(this.tela.notifyConfronto("Brigar com Billy??"))) {
+				try {
+					TelaBatalha tb = new TelaBatalha(MontanhaSagrada.jogador, tela, 4);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} else {
 			dialogo = "Estou com pressa, ja dei uma surra Billy, volto la pra bater nele denovo quando eu for aceito na Guilda Orizaba ";
 		}
 		dialogoCentroVila();
@@ -190,9 +231,16 @@ public class VilarejoController implements MouseListener {
 			}
 			MontanhaSagrada.jogador.adicionarItem(Consumivel.pegarOvoGrande());
 			MontanhaSagrada.jogador.getInteracoes().setPegarOvosCeleiro(true);
-			
-//				repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 2);
-			
+			Batalha b = new Batalha();
+			if (b.decisaoBatalha(this.tela.notifyConfronto(
+					"~A mulher de grande porte e musculos, pega algo da mochila e toma postura de batalha~"))) {
+				try {
+					TelaBatalha tb = new TelaBatalha(MontanhaSagrada.jogador, tela, 2);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		} else {
 			try {
 				dialogo = leitor.lerDialogos(MontanhaSagrada.jogador, "celeiro2.txt");
@@ -217,6 +265,20 @@ public class VilarejoController implements MouseListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		if (!MontanhaSagrada.jogador.getInteracoes().isEspantouAbutre()) {
+			MontanhaSagrada.jogador.getInteracoes().setEspantouAbutre(true);
+			Batalha b = new Batalha();
+			if (b.decisaoBatalha(this.tela.notifyConfronto(
+					"~Tem um abutre na porta de sua casa, comendo um rato podre,\nele esta te olhando de lado, salivando~"))) {
+				try {
+					TelaBatalha tb = new TelaBatalha(MontanhaSagrada.jogador, tela, 1);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
 		this.tela.getBtnOpcao3().setVisible(true);
 		this.tela.getBtnOpcao1().setText("Ir ao Celeiro");
 		this.tela.getBtnOpcao2().setText("Ir ao Centro da Vila");
@@ -262,6 +324,7 @@ public class VilarejoController implements MouseListener {
 		// TODO Auto-generated method stub
 
 	}
+
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 

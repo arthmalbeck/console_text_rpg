@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -23,6 +24,7 @@ import fileManipulator.Leitura;
 import item.Item;
 import personagem.Jogador;
 import personagem.Sexo;
+import sistema.MontanhaSagrada;
 
 public class TelaPrincipal extends JFrame {
 
@@ -452,59 +454,15 @@ public class TelaPrincipal extends JFrame {
 		this.btnOpcao5.addMouseListener(opc5);
 		//criar sexto botao
 	}
-
-	public void escolhaVilarejoSul(Jogador jogador, String dialogo) {
-
-		this.refreshTextPane();
-		this.txtPaneHistoria.setText(dialogo);
-//		MouseListener opc1 = new PeterController(this, jogador, "conversar_amigo"); // vai para o centro
-//		MouseListener opc2 = new MercadoController(this, jogador, "continuar_caminhando"); // mercado
-//		MouseListener opc3 = new CentroVilarejoController(this, jogador, "centro_vilarejo"); // vai para o centro
-//		this.btnOpcao1.addMouseListener(opc1);
-//		this.btnOpcao2.addMouseListener(opc2);
-//		this.btnOpcao3.addMouseListener(opc3);
-
+	
+	public int notifyConfronto(String string) {
+		Object[] options = { "Batalhar", "Tentar Fugir" };
+		 return JOptionPane.showOptionDialog(this, string, "Confronto Iminente", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
 	}
-
-	public void escolhaVilarejoOeste(Jogador jogador, String dialogo) {
-
-		this.refreshTextPane();
-		this.txtPaneHistoria.setText(dialogo);
-//		MouseListener opc1 = new FerreiroController(this, jogador, "ferreiro"); // vai para o centro
-//		MouseListener opc2 = new CentroVilarejoController(this, jogador, "centro_vilarejo"); // vai para o centro
-//		this.btnOpcao1.addMouseListener(opc1);
-//		this.btnOpcao2.addMouseListener(opc2);
-
-	}
-
-	public void escolhaVilarejoLeste(Jogador jogador, String dialogo) {
-
-		this.refreshTextPane();
-		this.txtPaneHistoria.setText(dialogo);
-//		MouseListener opc1 = new QuedaAguaController(this, jogador, "queda_agua"); // vai para o centro
-//		MouseListener opc2 = new ViajanteController(this, jogador, "viajante1"); // vai para o centro
-//		MouseListener opc3 = new CentroVilarejoController(this, jogador, "centro_vilarejo"); // vai para o centro
-
-//		this.btnOpcao1.addMouseListener(opc1);
-//		this.btnOpcao2.addMouseListener(opc2);
-//		this.btnOpcao2.addMouseListener(opc3);
-
-	}
-
-	public void escolhaVilarejoNorte(Jogador jogador, String dialogo) {
-
-		this.refreshTextPane();
-		// this.txtPaneHistoria.setFont(new Font("Tahoma", Font.PLAIN, 22)); // queria
-		// aumentar o tamanho da fonte, mas desse jeito não deu
-		this.txtPaneHistoria.setText(dialogo);
-//		MouseListener opc1 = new AnciaoController(this, jogador, "casa_anciao"); // vai para o centro
-//		MouseListener opc2 = new FlorestaController(this, jogador, "floresta"); // vai para o centro
-//		MouseListener opc3 = new CentroVilarejoController(this, jogador, "centro_vilarejo"); // vai para o centro
-
-//		this.btnOpcao1.addMouseListener(opc1);
-//		this.btnOpcao2.addMouseListener(opc2);
-//		this.btnOpcao2.addMouseListener(opc3);
-
+	
+	public void notifyBatalha(String string) {
+		JOptionPane.showMessageDialog(this, string,"Batalha"
+				, JOptionPane.INFORMATION_MESSAGE, null);
 	}
 
 	public JTextPane refreshTextPane() {

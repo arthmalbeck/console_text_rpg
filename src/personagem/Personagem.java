@@ -9,6 +9,7 @@ public class Personagem implements Serializable{
 	private int hp = 0;
 	private int maxHp = 0;
 	private boolean defendido;
+	private String pathImagem;
 	
 	public Personagem(){}
 
@@ -16,6 +17,14 @@ public class Personagem implements Serializable{
 		return nome;
 	}
 	
+	public String getPathImagem() {
+		return pathImagem;
+	}
+
+	public void setPathImagem(String pathImagem) {
+		this.pathImagem = pathImagem;
+	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}

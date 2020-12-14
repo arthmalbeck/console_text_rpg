@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import item.Bugiganga;
 import personagem.Jogador;
 import sistema.MontanhaSagrada;
 import view.TelaCriaJogador;
@@ -30,6 +31,7 @@ public class CriarJogador implements ActionListener {
 			MontanhaSagrada.jogador = new Jogador(this.tela.getTxtNomeJogador().getText(),
 					this.tela.getBtnSexo().getSelection().toString(),
 					this.tela.getCbxClasse().getSelectedItem().toString());
+			MontanhaSagrada.jogador.adicionarItem(Bugiganga.pegarCarta(MontanhaSagrada.jogador));
 		}
 		this.tela.notifyCriacaoSucesso();
 		TelaPrincipal frame = null;
@@ -42,8 +44,5 @@ public class CriarJogador implements ActionListener {
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.tela.setVisible(false);
 		frame.setVisible(true);
-		System.out.println(MontanhaSagrada.jogador.getNome());
-		System.out.println(MontanhaSagrada.jogador.getSexo().name());
-		System.out.println(MontanhaSagrada.jogador.getClasse().name());
 	}
 }

@@ -106,6 +106,26 @@ public class LeitorEntradas {
 		System.out.println(num1 +" " + num2);
 		return null;
 	}
+	
+	public static int[] lerItem(String opcao) {
+		String num1 = opcao.substring(0, 1);
+		String num2 = opcao.substring(1);
+		int op[] = new int[2];
+		if (opcao.length() == 2 && num1.matches("^[0-2]") && num2.matches("^[0-2]")) {
+			int n1 = Integer.parseInt(num1);
+			int n2 = Integer.parseInt(num2);
+			op[0] = n1;
+			op[1] = n2;
+			System.out.println(op[0] +"" + op[1]);
+			return op;
+		}else if(opcao.length() == 1 && num1.equals("9")) {
+			op[0] = 9;
+			return op;
+		}
+		System.out.println(opcao.length());
+		System.out.println(num1 +" " + num2);
+		return null;
+	}
 
 	public static void opcoesAlternativas(int op) {
 		switch (op) {

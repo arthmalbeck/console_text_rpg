@@ -167,15 +167,15 @@ public class Batalha implements ActionListener {
 	public static Inimigo geraOponente(int numInimigo) {
 		switch (numInimigo) {
 		case 1:
-			return new Inimigo("Abutre", 12, 4, 10);
+			return new Inimigo("Abutre", 12, 4, 10, "assets\\urubu.png");
 		case 2:
-			return new Inimigo("Jennet", 13, 6, 12);
+			return new Inimigo("Jennet", 13, 6, 12, "assets\\mulher2.png");
 		case 3:
-			return new Inimigo("Anciao", 14, 9, 13);
+			return new Inimigo("Anciao", 14, 9, 13, "assets\\anciao.png");
 		case 4:
-			return new Inimigo("Billy", 15, 11, 15);
+			return new Inimigo("Billy", 15, 11, 15, "assets\\homem5.png");
 		case 5:
-			return new Inimigo("Capitao Matsusuke", 20, 12, 16);
+			return new Inimigo("Capitao Matsusuke", 20, 12, 16, "assets\\homem1.png");
 		}
 		return null;
 	}

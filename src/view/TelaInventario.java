@@ -5,15 +5,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -40,6 +38,8 @@ public class TelaInventario extends JFrame {
 
 	public TelaInventario() {
 		// Mudando o icone da aplicacao
+		
+		
 		ImageIcon imgLogin = new ImageIcon("assets\\icone2.png");
 		setIconImage(imgLogin.getImage());
 		ImageIcon inventario = new ImageIcon("assets\\inventario.png");
@@ -70,29 +70,25 @@ public class TelaInventario extends JFrame {
 		lblCodigo.setLocation(450, 530);
 
 		txtCodigo = new JTextField(25);
-		txtCodigo.addKeyListener(new KeyAdapter() {
-	         public void keyPressed(KeyEvent ke) {
-	            String value = txtCodigo.getText();
-	            int l = value.length();
-	            if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
-	            	txtCodigo.setEditable(true);
-	            } else {
-	            	txtCodigo.setEditable(false);
-	            }
-	         }
-	      });
+//		txtCodigo.addKeyListener(new KeyAdapter() {
+//	         public void keyPressed(KeyEvent ke) {
+//	            String value = txtCodigo.getText();
+//	            int l = value.length();
+//	            if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+//	            	txtCodigo.setEditable(true);
+//	            } else {
+//	            	txtCodigo.setEditable(false);
+//	            }
+//	         }
+//	      });
 		
 		
 		btnEnviar = new JButton("Enviar");
 		btnEnviar.setLocation(250, 0);
 		btnEnviar.setSize(100, 20);
-		btnEnviar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-//				TelaInventario.this.setVisible(false);
-//				TelaInventario.this.dispose();
-			}
-		});
+		btnEnviar.setName("btnEnviar");
+		btnEnviar.addActionListener(new Inventario(this));
+		
 
 		painelMenu = new JPanel();
 		painelMenu.setLayout(new FlowLayout());
@@ -126,10 +122,59 @@ public class TelaInventario extends JFrame {
 		contentPane.add(scroll);
 		painelConteudo.add(contentPane);
 		pack();
-		
-		
-		
+	}
 
+	
+	
+	public void notifyItemInvalido() {
+		JOptionPane.showMessageDialog(this,
+				"Codigo Invalido!","Erro",JOptionPane.ERROR_MESSAGE, null );
+	}
+
+	public void notifyEquiparItem(String item) {
+		JOptionPane.showMessageDialog(this,
+				"Item " +item+" equipado com sucesso!","Sucesso",JOptionPane.OK_OPTION, null);
+	}
+	
+	public void notifyUsarConsumivel(String item) {
+		JOptionPane.showMessageDialog(this, MontanhaSagrada.jogador.getNome() +
+				" - usou o item " + item, "Sucesso",JOptionPane.OK_OPTION, null);
+	}
+	
+	public void notifyCartaGuilda() {
+		JOptionPane.showMessageDialog(this, "** Carta de aceitacao**\n" +
+				"Prezado " + MontanhaSagrada.jogador.getNome() + ",\n" + 
+				"Temos o prazer de informar que você foi aceito na Guilda Orizaba.\n" + 
+				"Os soldados da classe " + MontanhaSagrada.jogador.getClasse().name() + " sao obrigados a realizar a prova final, entao, \ncertifique-se de que a maior atencao possivel seja prestada a sua lista de objetivo:\n" + 
+				"- Ir para o norte do vilarejo Oishy\n" + 
+				"- Derrotar o capitão Matsusuke.\n" + 
+				"Atensiosamente Seu Novo Mestre!", "Carta de Guilda",JOptionPane.INFORMATION_MESSAGE, null );
+	
+	}
+	
+
+	public JLabel getLblIcone() {
+		return lblIcone;
+	}
+
+	public void setLblIcone(JLabel lblIcone) {
+		this.lblIcone = lblIcone;
+	}
+
+	public JLabel getLblCodigo() {
+		return lblCodigo;
+	}
+
+	public void setLblCodigo(JLabel lblCodigo) {
+		this.lblCodigo = lblCodigo;
+	}
+
+	public JTextField getTxtCodigo() {
+		return txtCodigo;
+	}
+
+	public void setTxtCodigo(JTextField txtCodigo) {
+		this.txtCodigo = txtCodigo;
 	}
 
 	public static void main(String[] args) {

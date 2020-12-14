@@ -62,7 +62,7 @@ public class Vilarejo {
 			MontanhaSagrada.jogador.getInteracoes().setEspantouAbutre(true);
 			System.out.println(
 					"~Tem um abutre na porta de sua casa, comendo um rato podre, ele estava lhe olhando de lado, salivando~");
-			repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 1);
+			repeat = BatalhaConsoleTxt.iniciaBatalha(MontanhaSagrada.jogador, 1);
 		}
 		while (repeat) {
 			System.out.println(
@@ -75,7 +75,7 @@ public class Vilarejo {
 					System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "celeiro1.txt"));
 					MontanhaSagrada.jogador.adicionarItem(Consumivel.pegarOvoGrande());
 					MontanhaSagrada.jogador.getInteracoes().setPegarOvosCeleiro(true);
-					repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 2);
+					repeat = BatalhaConsoleTxt.iniciaBatalha(MontanhaSagrada.jogador, 2);
 				} else {
 					System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "celeiro2.txt"));
 				}
@@ -112,10 +112,10 @@ public class Vilarejo {
 				if (!MontanhaSagrada.jogador.getInteracoes().isConversouBilly()) {
 				System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "sul.txt"));
 				MontanhaSagrada.jogador.getInteracoes().setConversouBilly(true);
-				repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 4);
+				repeat = BatalhaConsoleTxt.iniciaBatalha(MontanhaSagrada.jogador, 4);
 			}else if(MontanhaSagrada.jogador.getInteracoes().isConversouBilly() && !MontanhaSagrada.jogador.getInteracoes().isDerrotouBilly()){
 				System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "sul2.txt"));
-				repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 4);
+				repeat = BatalhaConsoleTxt.iniciaBatalha(MontanhaSagrada.jogador, 4);
 			}else {
 				System.out.println("Estou com pressa, ja dei uma surra Billy, volto la pra bater nele denovo quando eu for aceito na Guilda Orizaba ");
 			}
@@ -132,14 +132,14 @@ public class Vilarejo {
 				if(!MontanhaSagrada.jogador.getInteracoes().isDerrotouAnciao()) {
 					System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "oeste.txt"));
 					MontanhaSagrada.jogador.adicionarItem(Consumivel.pegarPocaoMagica());
-					repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 3);
+					repeat = BatalhaConsoleTxt.iniciaBatalha(MontanhaSagrada.jogador, 3);
 			}else {
 				System.out.println("Melhor nao ir naquele anciao loco denovo, dessa vez acho que ele ira drenar minha vida");
 			}
 				break;
 			case 4:
 				System.out.println(Leitura.lerDialogos(MontanhaSagrada.jogador, "norte.txt"));
-				repeat = Batalha.iniciaBatalha(MontanhaSagrada.jogador, 5);
+				repeat = BatalhaConsoleTxt.iniciaBatalha(MontanhaSagrada.jogador, 5);
 				break;
 			case 5:
 				if (MontanhaSagrada.jogador.getInteracoes().isDerrotouBilly() && !MontanhaSagrada.jogador.getInteracoes().isPegouChaves() ) {
