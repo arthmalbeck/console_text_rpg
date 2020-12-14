@@ -67,6 +67,7 @@ public class TelaPrincipal extends JFrame {
 	private JButton btnOpcao3;
 	private JButton btnOpcao4;
 	private JButton btnOpcao5;
+	private JButton btnOpcao6;
 
 	private JButton btnSalvar;
 	private JButton btnSair;
@@ -299,39 +300,46 @@ public class TelaPrincipal extends JFrame {
 
 		MouseListener action = new VilarejoController(this, "casa");
 		btnOpcao1 = new JButton("Prosseguir  >");
-		btnOpcao1.setSize(160, 50);
+		btnOpcao1.setSize(120, 50);
 		btnOpcao1.setLocation(75, 500);
 		btnOpcao1.addMouseListener(action);
 		painelHistoria.add(btnOpcao1);
 
 		btnOpcao2 = new JButton();
-		btnOpcao2.setSize(160, 50);
-		btnOpcao2.setLocation(250, 500);
+		btnOpcao2.setSize(120, 50);
+		btnOpcao2.setLocation(200, 500);
 		btnOpcao2.setVisible(false); // come�a invisivel
 
 		painelHistoria.add(btnOpcao2);
 
 		btnOpcao3 = new JButton();
-		btnOpcao3.setSize(160, 50);
-		btnOpcao3.setLocation(425, 500);
+		btnOpcao3.setSize(120, 50);
+		btnOpcao3.setLocation(325, 500);
 		btnOpcao3.setVisible(false); // come�a invisivel
 
 		painelHistoria.add(btnOpcao3);
 
 		btnOpcao4 = new JButton();
-		btnOpcao4.setSize(160, 50);
-		btnOpcao4.setLocation(600, 500);
+		btnOpcao4.setSize(120, 50);
+		btnOpcao4.setLocation(450, 500);
 		btnOpcao4.setVisible(false); // come�a invisivel
 
 		painelHistoria.add(btnOpcao4);
 
 		btnOpcao5 = new JButton();
-		btnOpcao5.setSize(100, 50);
-		btnOpcao5.setLocation(780, 500);
+		btnOpcao5.setSize(120, 50);
+		btnOpcao5.setLocation(575, 500);
 		btnOpcao5.setVisible(false); // come�a invisivel
 
 		painelHistoria.add(btnOpcao5);
 
+		btnOpcao6 = new JButton();
+		btnOpcao6.setSize(120, 50);
+		btnOpcao6.setLocation(700, 500);
+		btnOpcao6.setVisible(false); // come�a invisivel
+
+		painelHistoria.add(btnOpcao6);
+		
 		painelPrincipal.add(painelHistoria);
 		// Fim Painel HIst�ria
 
